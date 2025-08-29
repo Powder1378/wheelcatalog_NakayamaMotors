@@ -12,7 +12,7 @@ body {
 }
 
 header {
-  background-color: #b0e0e6;
+  background-color: #4682b4;
   color: white;
   padding: 1rem;
 }
@@ -44,7 +44,7 @@ h1 {
   flex-basis: 100%;
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: #ddd;
+  color: #6495ed;
 }
 
 /* グリッド表示修正 */
@@ -82,7 +82,7 @@ h1 {
 .wheel-card h3 {
   font-size: 1rem;
   margin-top: 0.5rem;
-  color: #6a1b9a;
+  color: #6495ed;
 }
 
 .no-result {
@@ -93,7 +93,7 @@ h1 {
 }
 
 .no-result strong {
-  color: #6a1b9a;
+  color: #6495ed;
 }
 
 /* フッター */
@@ -103,7 +103,7 @@ h1 {
   text-align: center;
   font-size: 14px;
   color: #333;
-  border-top: 1px solid #ba68c8;
+  border-top: 1px solid #4682b4;
 }
 
 .site-footer h2 {
@@ -193,3 +193,4 @@ h1 {
   z-index: 10000;
   border: none;
 }
+
