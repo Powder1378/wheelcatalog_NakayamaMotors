@@ -5,14 +5,14 @@
 
 body {
   font-family: "Segoe UI", sans-serif;
-  background-color: #e0ffff;
+  background-color: #e0ffff; /* 薄い水色 */
   margin: 0;
   padding: 0;
   color: #333;
 }
 
 header {
-  background-color: #002840;
+  background-color: #00bfff; /* ビビッド水色 */
   color: white;
   padding: 1rem;
 }
@@ -36,7 +36,7 @@ h1 {
   width: 100%;
   max-width: 300px;
   padding: 0.5rem;
-  border: 1px solid #aaa;
+  border: 1px solid #00bcd4;
   border-radius: 4px;
 }
 
@@ -44,10 +44,10 @@ h1 {
   flex-basis: 100%;
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: #00ced1;
+  color: #008b8b; /* 濃い水色 */
 }
 
-/* グリッド表示修正 */
+/* グリッド表示 */
 #wheel-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -64,13 +64,13 @@ h1 {
   padding: 1rem;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 2px 2px 6px rgba(106, 27, 154, 0.15);
+  box-shadow: 2px 2px 6px rgba(0, 191, 255, 0.15);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .wheel-card:hover {
   transform: scale(1.03);
-  box-shadow: 3px 3px 12px rgba(106, 27, 154, 0.3);
+  box-shadow: 3px 3px 12px rgba(0, 191, 255, 0.4);
 }
 
 .wheel-card img {
@@ -82,7 +82,7 @@ h1 {
 .wheel-card h3 {
   font-size: 1rem;
   margin-top: 0.5rem;
-  color: #6495ed;
+  color: #00bfff;
 }
 
 .no-result {
@@ -93,27 +93,27 @@ h1 {
 }
 
 .no-result strong {
-  color: #6495ed;
+  color: #00bfff;
 }
 
 /* フッター */
 .site-footer {
-  background-color: #e1bee7;
+  background-color: #b2ebf2; /* 明るい水色 */
   padding: 20px;
   text-align: center;
   font-size: 14px;
   color: #333;
-  border-top: 1px solid #4682b4;
+  border-top: 1px solid #00acc1;
 }
 
 .site-footer h2 {
   font-size: 18px;
   margin-bottom: 10px;
-  color: #4a148c;
+  color: #00796b;
 }
 
 .site-footer a {
-  color: #4a148c;
+  color: #006064;
   text-decoration: none;
 }
 
@@ -121,6 +121,7 @@ h1 {
   text-decoration: underline;
 }
 
+/* フィルターボタン */
 .filter-buttons {
   margin-top: 0.5rem;
   display: flex;
@@ -129,7 +130,7 @@ h1 {
 }
 
 .filter-buttons button {
-  background-color: #6a1b9a;
+  background-color: #00bcd4;
   color: white;
   border: none;
   padding: 0.4rem 0.8rem;
@@ -139,11 +140,10 @@ h1 {
 }
 
 .filter-buttons button:hover {
-  background-color: #8e24aa;
+  background-color: #0097a7;
 }
 
-
-/* クロームフィルター用：紫系スタイル */
+/* クロームフィルター：水色系 */
 .chrome-filter-buttons {
   display: flex;
   gap: 8px;
@@ -156,42 +156,40 @@ h1 {
 
 .chrome-filter-buttons label {
   padding: 6px 12px;
-  border: 1px solid #b497d6;
+  border: 1px solid #4dd0e1;
   border-radius: 6px;
   cursor: pointer;
-  background-color: #f3e8ff;
-  color: #5e4b8b;
+  background-color: #e0f7fa;
+  color: #006064;
   transition: all 0.2s;
 }
 
 .chrome-filter-buttons label:hover {
-  background-color: #e0ccff;
+  background-color: #b2ebf2;
 }
 
 .chrome-filter-buttons input[type="radio"]:checked + label {
-  background-color: #7e57c2;
+  background-color: #00acc1;
   color: #fff;
-  border-color: #7e57c2;
+  border-color: #00acc1;
 }
 
-
+/* スクロールトップボタン */
 #scroll-to-top {
   position: fixed;
   bottom: 20px;
   right: 20px;
   width: 100px;
   height: 100px;
-  background-color: #7b4dcc; /* 紫系 */
+  background-color: #00bfff; 
   color: white;
   border-radius: 50%;
   text-align: center;
-  line-height: 50px;
+  line-height: 100px;
   font-size: 56px;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(123, 77, 204, 0.8);
-  display: none; /* 最初は非表示 */
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
+  display: none;
   z-index: 10000;
   border: none;
 }
-
-
