@@ -12,7 +12,7 @@ body {
 }
 
 header {
-  background-color: #4682b4;
+  background-color: #002840;
   color: white;
   padding: 1rem;
 }
@@ -44,7 +44,7 @@ h1 {
   flex-basis: 100%;
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: #6495ed;
+  color: #00ced1;
 }
 
 /* グリッド表示修正 */
@@ -60,7 +60,7 @@ h1 {
 /* ホイールカード */
 .wheel-card {
   background: white;
-  border: 2px solid #ba68c8;
+  border: 2px solid #00ced1;
   padding: 1rem;
   border-radius: 12px;
   text-align: center;
@@ -193,4 +193,5 @@ h1 {
   z-index: 10000;
   border: none;
 }
+
 
