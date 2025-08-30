@@ -5,14 +5,14 @@
 
 body {
   font-family: "Segoe UI", sans-serif;
-  background-color: #e0ffff; /* 薄い水色 */
+  background-color: #e0f7fa; /* 明るい水色ベース */
   margin: 0;
   padding: 0;
   color: #333;
 }
 
 header {
-  background-color: #00bfff; /* ビビッド水色 */
+  background-color: #0288d1; /* 濃い青アクセント */
   color: white;
   padding: 1rem;
 }
@@ -36,7 +36,7 @@ h1 {
   width: 100%;
   max-width: 300px;
   padding: 0.5rem;
-  border: 1px solid #00bcd4;
+  border: 1px solid #0288d1;
   border-radius: 4px;
 }
 
@@ -44,7 +44,7 @@ h1 {
   flex-basis: 100%;
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: #008b8b; /* 濃い水色 */
+  color: #006064; /* 落ち着いた青緑 */
 }
 
 /* グリッド表示 */
@@ -60,17 +60,17 @@ h1 {
 /* ホイールカード */
 .wheel-card {
   background: white;
-  border: 2px solid #00ced1;
+  border: 2px solid #4dd0e1; /* 明るい水色枠 */
   padding: 1rem;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 2px 2px 6px rgba(0, 191, 255, 0.15);
+  box-shadow: 2px 2px 6px rgba(2, 136, 209, 0.2); /* 青影 */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .wheel-card:hover {
   transform: scale(1.03);
-  box-shadow: 3px 3px 12px rgba(0, 191, 255, 0.4);
+  box-shadow: 3px 3px 12px rgba(2, 136, 209, 0.4);
 }
 
 .wheel-card img {
@@ -82,7 +82,7 @@ h1 {
 .wheel-card h3 {
   font-size: 1rem;
   margin-top: 0.5rem;
-  color: #00bfff;
+  color: #0288d1; /* 濃い青見出し */
 }
 
 .no-result {
@@ -93,27 +93,27 @@ h1 {
 }
 
 .no-result strong {
-  color: #00bfff;
+  color: #0288d1;
 }
 
 /* フッター */
 .site-footer {
-  background-color: #b2ebf2; /* 明るい水色 */
+  background-color: #b2ebf2; /* 水色ベース */
   padding: 20px;
   text-align: center;
   font-size: 14px;
   color: #333;
-  border-top: 1px solid #00acc1;
+  border-top: 1px solid #0288d1; /* 濃い青で引き締め */
 }
 
 .site-footer h2 {
   font-size: 18px;
   margin-bottom: 10px;
-  color: #00796b;
+  color: #01579b; /* 濃紺 */
 }
 
 .site-footer a {
-  color: #006064;
+  color: #0288d1;
   text-decoration: none;
 }
 
@@ -130,20 +130,21 @@ h1 {
 }
 
 .filter-buttons button {
-  background-color: #00bcd4;
+  background-color: #0288d1; /* 濃い青 */
   color: white;
   border: none;
   padding: 0.4rem 0.8rem;
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.9rem;
+  transition: background-color 0.2s;
 }
 
 .filter-buttons button:hover {
-  background-color: #0097a7;
+  background-color: #0277bd; /* さらに濃い青 */
 }
 
-/* クロームフィルター：水色系 */
+/* クロームフィルター：水色＋青 */
 .chrome-filter-buttons {
   display: flex;
   gap: 8px;
@@ -169,9 +170,9 @@ h1 {
 }
 
 .chrome-filter-buttons input[type="radio"]:checked + label {
-  background-color: #00acc1;
+  background-color: #0288d1; /* 濃い青 */
   color: #fff;
-  border-color: #00acc1;
+  border-color: #0288d1;
 }
 
 /* スクロールトップボタン */
@@ -181,14 +182,14 @@ h1 {
   right: 20px;
   width: 100px;
   height: 100px;
-  background-color: #00bfff; 
+  background-color: #0288d1; /* 濃い青丸 */
   color: white;
   border-radius: 50%;
   text-align: center;
   line-height: 100px;
   font-size: 56px;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
+  box-shadow: 0 0 12px rgba(2, 136, 209, 0.8);
   display: none;
   z-index: 10000;
   border: none;
