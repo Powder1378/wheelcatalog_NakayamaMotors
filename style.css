@@ -220,54 +220,13 @@ h1 {
   z-index: 10000;
   border: none;
 }
-
-/* スタッフ紹介ページ */
-#staff-container {
-  padding: 40px;
-  text-align: center;
-}
-
-.staff-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.staff-card {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  padding: 20px;
-  width: 220px;
-  transition: transform 0.3s;
-}
-
-.staff-card:hover {
-  transform: translateY(-8px);
-}
-
-.staff-card img {
-  width: 100%;
-  border-radius: 50%;
-  margin-bottom: 15px;
-}
-
-.staff-card h3 {
-  margin: 10px 0 5px;
-}
-
-.staff-card p {
-  font-size: 14px;
-  color: #555;
-}
-
-
 #staff-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 最小200pxで自動調整 */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
   padding: 1rem;
+  max-width: 1200px; /* ページ幅を制限 */
+  margin: 0 auto;
 }
 
 .staff-card {
@@ -278,3 +237,11 @@ h1 {
   padding: 1rem;
   box-shadow: 2px 2px 6px rgba(2, 136, 209, 0.15);
 }
+
+.staff-card img {
+  max-width: 100%;   /* はみ出し防止 */
+  height: auto;      /* 縦横比を保つ */
+  border-radius: 50%; /* 丸型アイコンにする場合 */
+}
+
+
