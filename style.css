@@ -262,3 +262,19 @@ h1 {
   color: #555;
 }
 
+
+#staff-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 最小200pxで自動調整 */
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.staff-card {
+  background: white;
+  border: 2px solid #4dd0e1;
+  border-radius: 12px;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 2px 2px 6px rgba(2, 136, 209, 0.15);
+}
