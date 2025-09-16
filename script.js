@@ -576,6 +576,7 @@ function displayData(items) {
     card.innerHTML = `
       <img src="${item.image}" alt="${item.name}">
       <h3>${item.name}</h3>
+      <div class="wheel-type">${item.type}</div>
     `;
 
     // Sports + MOD のときだけ「色変更〇/✖」表示
@@ -651,4 +652,5 @@ document.getElementById("type-all-off").addEventListener("click", () => {
   // 初期実行
   applyFilters();
 });
+
 
