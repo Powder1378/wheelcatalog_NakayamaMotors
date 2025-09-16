@@ -44,7 +44,7 @@ h1 {
   flex-basis: 100%;
   margin-top: 0.5rem;
   font-size: 0.85rem;
-  color: #00796b;
+  color: #00e64d;
 }
 
 /* グリッド表示修正 */
@@ -220,4 +220,5 @@ h1 {
   z-index: 10000;
   border: none;
 }
+
 
