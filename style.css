@@ -220,12 +220,14 @@ h1 {
   z-index: 10000;
   border: none;
 }
+
+
 #staff-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1rem;
   padding: 1rem;
-  max-width: 1200px; /* ページ幅を制限 */
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -239,9 +241,22 @@ h1 {
 }
 
 .staff-card img {
-  max-width: 100%;   /* はみ出し防止 */
-  height: auto;      /* 縦横比を保つ */
-  border-radius: 50%; /* 丸型アイコンにする場合 */
+  width: 120px;      /* 固定サイズ */
+  height: 120px;     /* 正方形で統一 */
+  object-fit: cover; /* 枠いっぱいに収める */
+  border-radius: 50%; /* 丸型にする */
+  margin-bottom: 0.5rem;
 }
 
+.staff-card h3 {
+  margin: 0.3rem 0 0.2rem;
+  font-size: 1rem;
+  color: #0288d1;
+}
+
+.staff-card p {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0;
+}
 
