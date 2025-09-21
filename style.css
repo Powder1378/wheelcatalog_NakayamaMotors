@@ -223,13 +223,14 @@ h1 {
 
 
 #staff-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4列固定 */
-  gap: 1.5rem;
-  width: 90%;            /* 横幅を広げる */
-  max-width: 1400px;     /* 最大幅を指定 */
-  margin: 2rem auto;     /* 中央寄せ */
-  padding: 0 1rem;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1.5rem !important;
+  width: 90% !important;
+  max-width: 1400px !important;
+  margin: 2rem auto !important;
+  padding: 0 1rem !important;
+  box-sizing: border-box;
 }
 .staff-card {
   background: white;
@@ -246,5 +247,6 @@ h1 {
   object-fit: cover;
   margin-bottom: 1rem;
 }
+
 
 
