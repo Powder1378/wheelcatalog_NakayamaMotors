@@ -224,15 +224,12 @@ h1 {
 
 #staff-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr); /* 常に4列 */
   gap: 1.5rem;
   max-width: 1200px;
-  margin: 2rem auto;   /* 上下に余白 + 中央寄せ */
-  padding: 0 1rem;     /* 左右の余白 */
-  justify-items: center; /* 各カードを中央に配置 */
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
-
-
 .staff-card {
   background: white;
   border: 2px solid #4dd0e1;
@@ -240,17 +237,13 @@ h1 {
   text-align: center;
   padding: 1rem;
   width: 100%;
-  max-width: 220px; /* カードの最大幅を揃える */
   box-shadow: 2px 2px 6px rgba(2, 136, 209, 0.15);
 }
-
 .staff-card img {
   width: 120px;
   height: 120px;
-  object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 0.5rem;
+  object-fit: cover;
+  margin-bottom: 1rem;
 }
-
-
 
