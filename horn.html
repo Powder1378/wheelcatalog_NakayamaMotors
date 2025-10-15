@@ -19,177 +19,41 @@
       <button id="horn-stop" class="btn">⏹ 停止</button>
     </div>
   </header>
+<section id="audio-diagnose" style="padding:12px 16px;max-width:900px;margin:12px auto;background:#fff;border:2px solid #4dd0e1;border-radius:10px">
+  <h2 style="margin:0 0 .5rem;color:#0288d1;font-size:1.1rem">音源診断</h2>
+  <p style="margin:.3rem 0">下のコントロールで鳴るか確認 → 鳴かなければパス/コーデック問題です。</p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+    <!-- ★ あなたの実ファイル名に合わせて修正！ -->
+    <code id="p">./sounds/horn01.m4a</code>
+    <button id="diag-play">▶ 再生</button>
+    <button id="diag-stop">⏹ 停止</button>
+    <a id="diag-open" href="./sounds/horn01.m4a" target="_blank" style="margin-left:auto">ファイルを直接開く</a>
+  </div>
+  <audio id="diag-a" controls preload="auto" style="width:100%;margin-top:.5rem">
+    <source id="s1" src="./sounds/horn01.m4a" type="audio/mp4">
+    <source id="s2" src="./sounds/horn01.mp3" type="audio/mpeg">
+    このブラウザは audio に対応していません
+  </audio>
+  <pre id="diag-log" style="background:#f7f7f7;border:1px dashed #ccc;padding:.5rem;white-space:pre-wrap;margin-top:.5rem;max-height:200px;overflow:auto"></pre>
+</section>
 
-  <!-- 波紋アニメーション用 -->
-  <canvas id="bg-ripples" aria-hidden="true"></canvas>
-
-  <main id="horn-container"></main>
-
-  
 <script>
-  // 1) データ
-  const HORNS = [
-    { id:"horn01", name:"クラクション01", file:"./oudio/stock.m4a", comment:"短く鋭い" },
-    { id:"horn02", name:"クラクション02", file:"./oudio/truck.m4a", comment:"低く重厚" },
-    { id:"horn03", name:"クラクション03", file:"./oudio/cop.m4a", comment:"軽快ポップ" },
-  ];
-
-  // 2) 共有プレイヤー
-  const player = new Audio();
-  player.preload = "auto";
-  player.volume = 0.7;
-  let currentId = null;
-
-  const container = document.getElementById("horn-container");
-  const volume    = document.getElementById("horn-volume");
-  const stopBtn   = document.getElementById("horn-stop");
-
-  volume.addEventListener("input", () => { player.volume = Number(volume.value); });
-  stopBtn.addEventListener("click", () => { player.pause(); player.currentTime = 0; currentId = null; syncButtons(); });
-
-  // 3) カード描画
-  function render(){
-    container.innerHTML = "";
-    HORNS.forEach(h=>{
-      const card = document.createElement("div");
-      card.className = "horn-card";
-      card.innerHTML = `
-        <h3>${h.name}</h3>
-        <p class="horn-comment">${h.comment ?? ""}</p>
-        <button class="play-btn" data-id="${h.id}">▶ 再生</button>
-      `;
-      container.appendChild(card);
-    });
-    container.querySelectorAll(".play-btn").forEach(btn=>{
-      btn.addEventListener("click", onPlayClick);
-    });
-  }
-
-  // 4) 再生クリック
-  async function onPlayClick(e){
-    try {
-      const id = e.currentTarget.dataset.id;
-      const horn = HORNS.find(x => x.id === id);
-      if(!horn) return;
-
-      // 初回クリックで必ずオーディオ環境を準備（iOS/Safari対策）
-      await ensureAudioContext();
-
-      // 同じボタンなら停止トグル
-      if (currentId === id && !player.paused) {
-        player.pause();
-        currentId = null;
-        return syncButtons();
-      }
-
-      player.src = horn.file;
-      currentId = id;
-
-      // ここで波紋初期化 → すぐ再生
-      initAudioReactiveOnce();
-      await player.play();
-
-      syncButtons();
-    } catch (err) {
-      console.error("play() error:", err);
-      alert("再生に失敗しました。音源パスとブラウザの自動再生制限を確認してください。");
-    }
-  }
-
-  function syncButtons(){
-    document.querySelectorAll(".play-btn").forEach(btn=>{
-      const active = (btn.dataset.id===currentId && !player.paused);
-      btn.textContent = active ? "⏸ 停止" : "▶ 再生";
-    });
-  }
-
-  // ネットワーク/コーデック/パスのエラーを把握
-  player.addEventListener("error", ()=>{
-    console.error("audio error code:", player.error?.code); // 4=SRC_NOT_SUPPORTED, 3=DECODE
-    alert("音源を読み込めませんでした（パス/拡張子/コーデックを確認）");
+(function(){
+  const a = document.getElementById('diag-a');
+  const log = (m)=>{ const el=document.getElementById('diag-log'); el.textContent += m + "\n"; };
+  document.getElementById('diag-play').onclick = async ()=>{
+    try{
+      a.muted=false; a.volume=0.9; a.currentTime=0;
+      await a.play(); log('play(): OK');
+    }catch(e){ log('play() エラー: ' + e); alert('ページ内を一度クリックしてから再生してみて下さい'); }
+  };
+  document.getElementById('diag-stop').onclick = ()=>{ a.pause(); a.currentTime=0; };
+  a.addEventListener('error', ()=>{
+    const c = a.error && a.error.code;
+    log('audio error code=' + c + '（1:ABORT 2:NETWORK 3:DECODE 4:SRC_NOT_SUPPORTED）');
   });
-  player.addEventListener("ended", ()=>{ currentId = null; syncButtons(); });
-  player.addEventListener("pause", ()=>{ if(player.currentTime===0){ currentId=null; syncButtons(); }});
-
-  // 5) 波紋（音に反応）
-  let audioCtx, analyser, srcNode, rafId;
-  let ripples = [];
-  const canvas = document.getElementById("bg-ripples");
-  const ctx = canvas.getContext("2d");
-
-  function resizeCanvas(){ canvas.width = innerWidth; canvas.height = innerHeight; }
-  addEventListener("resize", resizeCanvas); resizeCanvas();
-
-  async function ensureAudioContext(){
-    if (!audioCtx) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    if (audioCtx.state === "suspended") {
-      // 必ずユーザー操作中に resume する
-      await audioCtx.resume();
-    }
-  }
-
-  function initAudioReactiveOnce(){
-    if (analyser) return; // 二重初期化防止
-    if (!audioCtx) return; // ensureAudioContext が先
-    srcNode = audioCtx.createMediaElementSource(player);
-    analyser = audioCtx.createAnalyser();
-    analyser.fftSize = 1024;
-    srcNode.connect(analyser);
-    // MediaElementは自分で出力するので destination には繋がない（重複再生回避）
-    startVisual();
-  }
-
-  function startVisual(){
-    const buf = new Uint8Array(analyser.frequencyBinCount);
-    cancelAnimationFrame(rafId);
-    const loop = ()=>{
-      rafId = requestAnimationFrame(loop);
-      analyser.getByteTimeDomainData(buf);
-
-      // 音量の目安（RMS）
-      let sum=0;
-      for(let i=0;i<buf.length;i++){ const v=(buf[i]-128)/128; sum+=v*v; }
-      const rms = Math.sqrt(sum/buf.length);
-
-      // しきい値超えで波紋追加
-      if (rms > 0.05) spawnRipple(rms);
-
-      drawRipples();
-    };
-    loop();
-  }
-
-  function spawnRipple(power){
-    const x = canvas.width/2  + (Math.random()-0.5)*200;
-    const y = canvas.height/2 + (Math.random()-0.5)*100;
-    ripples.push({
-      x, y, r: 0,
-      maxR: Math.min(canvas.width, canvas.height) * (0.25 + power*0.5),
-      alpha: 0.7,
-      line: 2 + power*8
-    });
-    if (ripples.length > 50) ripples.shift();
-  }
-
-  function drawRipples(){
-    // 前フレームをクリア（画面が白っぽくならない）
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    ripples.forEach(r=>{
-      r.r += 3;
-      r.alpha *= 0.96;
-      ctx.beginPath();
-      ctx.arc(r.x, r.y, r.r, 0, Math.PI*2);
-      ctx.strokeStyle = `rgba(2,136,209,${r.alpha})`;
-      ctx.lineWidth = r.line;
-      ctx.stroke();
-    });
-
-    ripples = ripples.filter(r => r.alpha > 0.02 && r.r < r.maxR);
-  }
-
-  // 初期描画
-  render();
+  // ブラウザ対応状況
+  log('canPlayType m4a(audio/mp4): ' + a.canPlayType('audio/mp4'));
+  log('canPlayType mp3(audio/mpeg): ' + a.canPlayType('audio/mpeg'));
+})();
 </script>
