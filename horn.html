@@ -1,73 +1,56 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>クラクション試聴</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <h1>クラクション試聴</h1>
-    <nav>
-      <a href="index.html">🏠 ホイールカタログ</a>
-      <a href="staff.html">👥 スタッフ紹介</a>
-    </nav>
+<!-- 省略: いつもの <header> / <nav> / #horn-toolbar / #bg-ripples / #horn-container -->
 
-    <div id="horn-toolbar">
-      <label>音量 <input id="horn-volume" type="range" min="0" max="1" step="0.01" value="0.7"></label>
-      <button id="horn-stop" class="btn">⏹ 停止</button>
-    </div>
-  </header>
+<script>
+  // 1) データ
+  const HORNS = [
+    { id:"horn01", name:"クラクション01", file:"./oudio/stock.m4a", comment:"短く鋭い" },
+    { id:"horn02", name:"クラクション02", file:"./oudio/truck.m4a", comment:"低く重厚" },
+    { id:"horn03", name:"クラクション03", file:"./oudio/cop.m4a", comment:"軽快ポップ" },
+  ];
 
-  <!-- 波紋アニメーション用 -->
-  <canvas id="bg-ripples" aria-hidden="true"></canvas>
+  // 2) 共有プレイヤー
+  const player = new Audio();
+  player.preload = "auto";
+  player.volume = 0.7;
+  let currentId = null;
 
-  <main id="horn-container"></main>
+  const container = document.getElementById("horn-container");
+  const volume    = document.getElementById("horn-volume");
+  const stopBtn   = document.getElementById("horn-stop");
 
-  <script>
-    const HORNS = [
-      { id:"horn01", name:"クラクション01", file:"./oudio/stock.m4a", comment:"デフォルトのクラクション" },
-      { id:"horn02", name:"クラクション02", file:"./oudio/truck.m4a", comment:"トラックやPD車両で使用されてるクラクション" },
-      { id:"horn03", name:"クラクション03", file:"./oudio/cop.m4a", comment:"ぱふっ" },
-    ];
+  volume.addEventListener("input", () => { player.volume = Number(volume.value); });
+  stopBtn.addEventListener("click", () => { player.pause(); player.currentTime = 0; currentId = null; syncButtons(); });
 
-    const player = new Audio();
-    player.preload = "auto";
-    player.volume = 0.7;
-    let currentId = null;
+  // 3) カード描画
+  function render(){
+    container.innerHTML = "";
+    HORNS.forEach(h=>{
+      const card = document.createElement("div");
+      card.className = "horn-card";
+      card.innerHTML = `
+        <h3>${h.name}</h3>
+        <p class="horn-comment">${h.comment ?? ""}</p>
+        <button class="play-btn" data-id="${h.id}">▶ 再生</button>
+      `;
+      container.appendChild(card);
+    });
+    container.querySelectorAll(".play-btn").forEach(btn=>{
+      btn.addEventListener("click", onPlayClick);
+    });
+  }
 
-    const container = document.getElementById("horn-container");
-    const volume = document.getElementById("horn-volume");
-    const stopBtn = document.getElementById("horn-stop");
-
-    volume.addEventListener("input", () => { player.volume = Number(volume.value); });
-    stopBtn.addEventListener("click", () => { player.pause(); player.currentTime = 0; currentId = null; syncButtons(); });
-
-    function render(){
-      container.innerHTML = "";
-      HORNS.forEach(h => {
-        const card = document.createElement("div");
-        card.className = "horn-card";
-        card.innerHTML = `
-          <h3>${h.name}</h3>
-          <p class="horn-comment">${h.comment ?? ""}</p>
-          <button class="play-btn" data-id="${h.id}">▶ 再生</button>
-        `;
-        container.appendChild(card);
-      });
-
-      container.querySelectorAll(".play-btn").forEach(btn => {
-        btn.addEventListener("click", onPlayClick);
-      });
-    }
-
-    async function onPlayClick(e){
+  // 4) 再生クリック
+  async function onPlayClick(e){
+    try {
       const id = e.currentTarget.dataset.id;
       const horn = HORNS.find(x => x.id === id);
       if(!horn) return;
 
-      if(currentId === id && !player.paused){
+      // 初回クリックで必ずオーディオ環境を準備（iOS/Safari対策）
+      await ensureAudioContext();
+
+      // 同じボタンなら停止トグル
+      if (currentId === id && !player.paused) {
         player.pause();
         currentId = null;
         return syncButtons();
@@ -75,83 +58,112 @@
 
       player.src = horn.file;
       currentId = id;
-      try{
-        await player.play();
-        initAudioReactiveOnce();
-      }catch(err){
-        alert("再生できませんでした。クリック後にもう一度試してください。");
-      }
+
+      // ここで波紋初期化 → すぐ再生
+      initAudioReactiveOnce();
+      await player.play();
+
       syncButtons();
+    } catch (err) {
+      console.error("play() error:", err);
+      alert("再生に失敗しました。音源パスとブラウザの自動再生制限を確認してください。");
     }
+  }
 
-    function syncButtons(){
-      document.querySelectorAll(".play-btn").forEach(btn=>{
-        const active = (btn.dataset.id===currentId && !player.paused);
-        btn.textContent = active ? "⏸ 停止" : "▶ 再生";
-      });
+  function syncButtons(){
+    document.querySelectorAll(".play-btn").forEach(btn=>{
+      const active = (btn.dataset.id===currentId && !player.paused);
+      btn.textContent = active ? "⏸ 停止" : "▶ 再生";
+    });
+  }
+
+  // ネットワーク/コーデック/パスのエラーを把握
+  player.addEventListener("error", ()=>{
+    console.error("audio error code:", player.error?.code); // 4=SRC_NOT_SUPPORTED, 3=DECODE
+    alert("音源を読み込めませんでした（パス/拡張子/コーデックを確認）");
+  });
+  player.addEventListener("ended", ()=>{ currentId = null; syncButtons(); });
+  player.addEventListener("pause", ()=>{ if(player.currentTime===0){ currentId=null; syncButtons(); }});
+
+  // 5) 波紋（音に反応）
+  let audioCtx, analyser, srcNode, rafId;
+  let ripples = [];
+  const canvas = document.getElementById("bg-ripples");
+  const ctx = canvas.getContext("2d");
+
+  function resizeCanvas(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+  addEventListener("resize", resizeCanvas); resizeCanvas();
+
+  async function ensureAudioContext(){
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     }
-
-    player.addEventListener("ended", ()=>{ currentId=null; syncButtons(); });
-    player.addEventListener("pause", ()=>{ if(player.currentTime===0){ currentId=null; syncButtons(); } });
-
-    // ===== 波紋アニメーション =====
-    let audioCtx, analyser, srcNode, raf;
-    let ripples = [];
-    const cvs = document.getElementById("bg-ripples");
-    const ctx = cvs.getContext("2d");
-    function resizeCanvas(){ cvs.width=innerWidth; cvs.height=innerHeight; }
-    window.addEventListener("resize", resizeCanvas); resizeCanvas();
-
-    function initAudioReactiveOnce(){
-      if(audioCtx) return;
-      audioCtx = new (window.AudioContext||window.webkitAudioContext)();
-      srcNode = audioCtx.createMediaElementSource(player);
-      analyser = audioCtx.createAnalyser();
-      analyser.fftSize = 1024;
-      srcNode.connect(analyser);
-      startVisual();
+    if (audioCtx.state === "suspended") {
+      // 必ずユーザー操作中に resume する
+      await audioCtx.resume();
     }
+  }
 
-    function startVisual(){
-      const buf = new Uint8Array(analyser.frequencyBinCount);
-      const loop = ()=>{
-        raf=requestAnimationFrame(loop);
-        analyser.getByteTimeDomainData(buf);
-        let sum=0;
-        for(let i=0;i<buf.length;i++){ const v=(buf[i]-128)/128; sum+=v*v; }
-        const rms=Math.sqrt(sum/buf.length);
-        if(rms>0.06) spawnRipple(rms);
-        drawRipples();
-      };
-      loop();
-    }
+  function initAudioReactiveOnce(){
+    if (analyser) return; // 二重初期化防止
+    if (!audioCtx) return; // ensureAudioContext が先
+    srcNode = audioCtx.createMediaElementSource(player);
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 1024;
+    srcNode.connect(analyser);
+    // MediaElementは自分で出力するので destination には繋がない（重複再生回避）
+    startVisual();
+  }
 
-    function spawnRipple(power){
-      const x=cvs.width/2+(Math.random()-0.5)*200;
-      const y=cvs.height/2+(Math.random()-0.5)*100;
-      ripples.push({
-        x,y,r:0,maxR:Math.min(cvs.width,cvs.height)*(0.25+power*0.5),
-        alpha:0.7,line:2+power*8
-      });
-      if(ripples.length>50) ripples.shift();
-    }
+  function startVisual(){
+    const buf = new Uint8Array(analyser.frequencyBinCount);
+    cancelAnimationFrame(rafId);
+    const loop = ()=>{
+      rafId = requestAnimationFrame(loop);
+      analyser.getByteTimeDomainData(buf);
 
-    function drawRipples(){
-      ctx.fillStyle="rgba(224,247,250,0.2)";
-      ctx.fillRect(0,0,cvs.width,cvs.height);
-      ripples.forEach(r=>{
-        r.r+=3;
-        r.alpha*=0.96;
-        ctx.beginPath();
-        ctx.arc(r.x,r.y,r.r,0,Math.PI*2);
-        ctx.strokeStyle=`rgba(2,136,209,${r.alpha})`;
-        ctx.lineWidth=r.line;
-        ctx.stroke();
-      });
-      ripples=ripples.filter(r=>r.alpha>0.02&&r.r<r.maxR);
-    }
+      // 音量の目安（RMS）
+      let sum=0;
+      for(let i=0;i<buf.length;i++){ const v=(buf[i]-128)/128; sum+=v*v; }
+      const rms = Math.sqrt(sum/buf.length);
 
-    render();
-  </script>
-</body>
-</html>
+      // しきい値超えで波紋追加
+      if (rms > 0.05) spawnRipple(rms);
+
+      drawRipples();
+    };
+    loop();
+  }
+
+  function spawnRipple(power){
+    const x = canvas.width/2  + (Math.random()-0.5)*200;
+    const y = canvas.height/2 + (Math.random()-0.5)*100;
+    ripples.push({
+      x, y, r: 0,
+      maxR: Math.min(canvas.width, canvas.height) * (0.25 + power*0.5),
+      alpha: 0.7,
+      line: 2 + power*8
+    });
+    if (ripples.length > 50) ripples.shift();
+  }
+
+  function drawRipples(){
+    // 前フレームをクリア（画面が白っぽくならない）
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ripples.forEach(r=>{
+      r.r += 3;
+      r.alpha *= 0.96;
+      ctx.beginPath();
+      ctx.arc(r.x, r.y, r.r, 0, Math.PI*2);
+      ctx.strokeStyle = `rgba(2,136,209,${r.alpha})`;
+      ctx.lineWidth = r.line;
+      ctx.stroke();
+    });
+
+    ripples = ripples.filter(r => r.alpha > 0.02 && r.r < r.maxR);
+  }
+
+  // 初期描画
+  render();
+</script>
