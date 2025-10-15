@@ -21,13 +21,80 @@
   </header>
 
   
-<main id="horn-container">（ここが”カード表示エリア”です）</main>
+<main id="horn-container"></main>
+
 
 <script>
-  document.getElementById('horn-container').innerHTML = `
-    <div class="horn-card" style="border:2px solid #4dd0e1;border-radius:12px;padding:1rem;text-align:center;background:#fff">
-      <h3 style="margin:.2rem 0;color:#0288d1">テストカード</h3>
-      <p style="margin:0 0 .5rem;color:#555">ここにカードが見えたらOK</p>
-    </div>
-  `;
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1件だけ（まずは表示が出ることを確認）
+    const HORNS = [
+      { id: "h01", name: "スタンダード", file: "./oudio/stock.m4a", comment: "短く鋭いビープ" }
+    ];
+
+    const container = document.getElementById("horn-container");
+    if (!container) {
+      console.error('#horn-container が見つかりません');
+      return;
+    }
+
+    // 表示
+    container.innerHTML = HORNS.map(h => `
+      <div class="horn-card" style="border:2px solid #4dd0e1;border-radius:12px;padding:1rem;text-align:center;background:#fff;margin:8px 0">
+        <h3 style="margin:.2rem 0;color:#0288d1">${h.name}</h3>
+        <p style="margin:0 0 .5rem;color:#555">${h.comment ?? ""}</p>
+        <button class="play-btn" data-id="${h.id}" style="background:#0288d1;color:#fff;border:none;padding:.5rem 1rem;border-radius:8px;cursor:pointer">▶ 再生</button>
+      </div>
+    `).join('');
+
+    // 再生（共有プレイヤー）
+    const player = new Audio();
+    player.preload = "auto";
+    player.volume = 0.7;
+    let currentId = null;
+
+    const volumeEl = document.getElementById("horn-volume");
+    const stopBtn  = document.getElementById("horn-stop");
+    if (volumeEl) volumeEl.addEventListener("input", () => { player.volume = Number(volumeEl.value); });
+    if (stopBtn)  stopBtn.addEventListener("click", () => { player.pause(); player.currentTime = 0; currentId = null; syncButtons(); });
+
+    container.querySelectorAll(".play-btn").forEach(btn => {
+      btn.addEventListener("click", async (e) => {
+        const id = e.currentTarget.dataset.id;
+        const horn = HORNS.find(x => x.id === id);
+        if (!horn) return;
+
+        if (currentId === id && !player.paused) {
+          player.pause();
+          currentId = null;
+          return syncButtons();
+        }
+
+        try {
+          player.src = horn.file;          // ← ここが実ファイルパス
+          player.currentTime = 0;
+          await player.play();             // クリック内なので自動再生制限OK
+          currentId = id;
+          syncButtons();
+        } catch (err) {
+          console.error("play() error:", err);
+          alert("再生に失敗：パス ./oudio/stock.m4a とブラウザ設定を確認してください。");
+        }
+      });
+    });
+
+    function syncButtons(){
+      container.querySelectorAll(".play-btn").forEach(btn => {
+        btn.textContent = (btn.dataset.id === currentId && !player.paused) ? "⏸ 停止" : "▶ 再生";
+      });
+    }
+
+    player.addEventListener("ended", () => { currentId = null; syncButtons(); });
+    player.addEventListener("pause", () => {
+      if (player.currentTime === 0) { currentId = null; syncButtons(); }
+    });
+    player.addEventListener("error", () => {
+      console.error("audio error code:", player.error?.code);
+      alert("音源の読み込みに失敗（パス/拡張子/コーデック）");
+    });
+  });
 </script>
