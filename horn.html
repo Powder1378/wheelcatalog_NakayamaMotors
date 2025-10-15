@@ -21,85 +21,13 @@
   </header>
 
   
+<main id="horn-container">（ここが”カード表示エリア”です）</main>
+
 <script>
-  // ここに並べたい音を追加（idは一意に）
-  const HORNS = [
-    { id: "h01", name: "スタンダード", file: "./oudio/stock.m4a", comment: "短く鋭いビープ" },
-    // 例）{ id: "h02", name: "ラリー", file: "./oudio/rally.m4a", comment: "元気なトーン" },
-    // 例）{ id: "h03", name: "トラック", file: "./oudio/truck.m4a", comment: "低音ズドン" },
-  ];
-
-  // 共有プレイヤー1個だけ（同時再生を防ぐ）
-  const player = new Audio();
-  player.preload = "auto";
-  player.volume = 0.7;
-  let currentId = null;
-
-  const container = document.getElementById("horn-container");
-  const volumeEl = document.getElementById("horn-volume");
-  const stopBtn  = document.getElementById("horn-stop");
-
-  // 既存の音量スライダー＆停止ボタンを活かす
-  if (volumeEl) volumeEl.addEventListener("input", () => { player.volume = Number(volumeEl.value); });
-  if (stopBtn)  stopBtn.addEventListener("click", () => { player.pause(); player.currentTime = 0; currentId = null; syncButtons(); });
-
-  function render(){
-    container.innerHTML = "";
-    HORNS.forEach(h => {
-      const card = document.createElement("div");
-      card.className = "horn-card";
-      card.innerHTML = `
-        <h3>${h.name}</h3>
-        <p class="horn-comment">${h.comment ?? ""}</p>
-        <button class="play-btn" data-id="${h.id}">▶ 再生</button>
-      `;
-      container.appendChild(card);
-    });
-
-    container.querySelectorAll(".play-btn").forEach(btn => {
-      btn.addEventListener("click", onPlayClick);
-    });
-  }
-
-  async function onPlayClick(e){
-    const id = e.currentTarget.dataset.id;
-    const horn = HORNS.find(x => x.id === id);
-    if (!horn) return;
-
-    // 同じボタンなら停止トグル
-    if (currentId === id && !player.paused) {
-      player.pause();
-      currentId = null;
-      return syncButtons();
-    }
-
-    try {
-      player.src = horn.file;
-      player.currentTime = 0;
-      await player.play();         // クリック内なので自動再生制限OK
-      currentId = id;
-      syncButtons();
-    } catch (err) {
-      console.error("play() error:", err);
-      alert("再生に失敗しました。音源パスやブラウザの設定を確認してください。");
-    }
-  }
-
-  function syncButtons(){
-    document.querySelectorAll(".play-btn").forEach(btn => {
-      const active = (btn.dataset.id === currentId && !player.paused);
-      btn.textContent = active ? "⏸ 停止" : "▶ 再生";
-    });
-  }
-
-  player.addEventListener("ended", () => { currentId = null; syncButtons(); });
-  player.addEventListener("pause", () => {
-    if (player.currentTime === 0) { currentId = null; syncButtons(); }
-  });
-  player.addEventListener("error", () => {
-    console.error("audio error code:", player.error?.code);
-    alert("音源の読み込みに失敗しました（パス/コーデック/拡張子を確認）");
-  });
-
-  render();
+  document.getElementById('horn-container').innerHTML = `
+    <div class="horn-card" style="border:2px solid #4dd0e1;border-radius:12px;padding:1rem;text-align:center;background:#fff">
+      <h3 style="margin:.2rem 0;color:#0288d1">テストカード</h3>
+      <p style="margin:0 0 .5rem;color:#555">ここにカードが見えたらOK</p>
+    </div>
+  `;
 </script>
