@@ -263,6 +263,44 @@ h1 {
 }
 
 
+/* クラクション試聴ページ */
+#horn-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.horn-card {
+  background: #fff;
+  border: 2px solid #4dd0e1;
+  border-radius: 12px;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 2px 2px 6px rgba(2,136,209,0.15);
+}
+
+.horn-card h3 {
+  margin: 0 0 0.5rem;
+  color: #0288d1;
+}
+
+.play-btn {
+  background-color: #0288d1;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(2,136,209,0.25);
+  font-size: 0.95rem;
+}
+
+.play-btn:hover {
+  background-color: #0277bd;
+}
 
 
 
