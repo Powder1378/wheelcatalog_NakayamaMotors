@@ -1,95 +1,71 @@
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>クラクション試聴</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>クラクション試聴（テスト）</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto; margin:0; padding:1rem; background:#e0f7fa;}
+    h1{margin:0 0 1rem; color:#0288d1;}
+    #horn-container{display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; max-width:600px; margin:0 auto;}
+    .horn-card{background:#fff; border:2px solid #4dd0e1; border-radius:12px; padding:1rem; text-align:center;}
+    .horn-card h3{margin:.2rem 0 .6rem; color:#0288d1; font-size:1rem;}
+    .play-btn{background:#0288d1; color:#fff; border:none; padding:.5rem 1rem; border-radius:8px; cursor:pointer;}
+  </style>
 </head>
 <body>
-  <header>
-    <h1>クラクション試聴</h1>
-    <nav>
-      <a href="index.html">🏠 ホイールカタログへ戻る</a>
-    </nav>
-
-    <div id="horn-toolbar" style="margin-top:.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-      <label style="display:flex;align-items:center;gap:.4rem;">
-        音量 <input id="horn-volume" type="range" min="0" max="1" step="0.01" value="0.7">
-      </label>
-      <button id="horn-stop">⏹ 停止</button>
-    </div>
-  </header>
+  <h1>クラクション試聴（テスト）</h1>
+  <div style="margin:0 0 .75rem; text-align:center;">
+    音量 <input id="vol" type="range" min="0" max="1" step="0.01" value="0.7">
+    <button id="stop">⏹ 停止</button>
+  </div>
 
   <main id="horn-container"></main>
 
   <script>
-    // ===== データ一覧 =====
+    // ★ 実ファイルの置き場所に合わせて必ず直してください
     const HORNS = [
-      { id: "horn01", name: "クラクション01", file: "./sounds/stock.m4a" },
-      { id: "horn02", name: "クラクション02", file: "./sounds/truck.m4a" },
-      { id: "horn03", name: "クラクション03", file: "./sounds/cop.m4a" },
-      // …ここに最大50個まで同じ形式で追加
+      { id: "h1", name: "クラクション01", file: "./sounds/stock.m4a" },
+      { id: "h2", name: "クラクション02", file: "./sounds/truck.m4a" },
     ];
 
-    // ===== 再生用オーディオ =====
-    const player = new Audio();
-    player.preload = "auto";
-    player.volume = 0.7;
+    const player = new Audio(); player.preload = "auto"; player.volume = 0.7;
     let currentId = null;
 
     const container = document.getElementById("horn-container");
-    const volume = document.getElementById("horn-volume");
-    const stopBtn = document.getElementById("horn-stop");
+    const vol = document.getElementById("vol");
+    const stop = document.getElementById("stop");
+    vol.addEventListener("input", ()=> player.volume = Number(vol.value));
+    stop.addEventListener("click", ()=>{ player.pause(); player.currentTime = 0; currentId=null; sync(); });
 
-    volume.addEventListener("input", () => { player.volume = Number(volume.value); });
-    stopBtn.addEventListener("click", () => { player.pause(); player.currentTime = 0; currentId = null; syncButtons(); });
-
-    // ===== カード生成 =====
     function render(){
       container.innerHTML = "";
-      HORNS.forEach(h => {
+      HORNS.forEach(h=>{
         const card = document.createElement("div");
         card.className = "horn-card";
-        card.innerHTML = `
-          <h3>${h.name}</h3>
-          <button class="play-btn" data-id="${h.id}">▶ 再生</button>
-        `;
+        card.innerHTML = `<h3>${h.name}</h3><button class="play-btn" data-id="${h.id}">▶ 再生</button>`;
         container.appendChild(card);
       });
-
-      container.querySelectorAll(".play-btn").forEach(btn => {
-        btn.addEventListener("click", async (e) => {
+      container.querySelectorAll(".play-btn").forEach(b=>{
+        b.addEventListener("click", async (e)=>{
           const id = e.currentTarget.dataset.id;
-          const horn = HORNS.find(x => x.id === id);
-          if (!horn) return;
-
-          if (currentId === id && !player.paused) {
-            player.pause();
-            currentId = null;
-            syncButtons();
-            return;
-          }
-
+          const horn = HORNS.find(x=>x.id===id);
+          if(!horn) return;
+          if(currentId===id && !player.paused){ player.pause(); currentId=null; return sync(); }
           player.src = horn.file;
           currentId = id;
-          try { await player.play(); }
-          catch(err){ console.error("再生エラー:", err); }
-          syncButtons();
+          try{ await player.play(); }catch(err){ alert("最初にページ上でクリックしてから再生してください。"); }
+          sync();
         });
       });
     }
-
-    // ===== ボタン状態同期 =====
-    function syncButtons(){
-      document.querySelectorAll(".play-btn").forEach(btn => {
-        const isActive = (btn.dataset.id === currentId && !player.paused);
-        btn.textContent = isActive ? "⏸ 停止" : "▶ 再生";
+    function sync(){
+      document.querySelectorAll(".play-btn").forEach(b=>{
+        b.textContent = (b.dataset.id===currentId && !player.paused) ? "⏸ 停止" : "▶ 再生";
       });
     }
-
-    player.addEventListener("ended", () => { currentId = null; syncButtons(); });
-    player.addEventListener("pause", () => { if (player.currentTime === 0) currentId = null; syncButtons(); });
-
+    player.addEventListener("ended", ()=>{ currentId=null; sync(); });
+    player.addEventListener("pause", ()=>{ if(player.currentTime===0){ currentId=null; sync(); }});
     render();
   </script>
 </body>
