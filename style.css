@@ -306,22 +306,6 @@ h1 {
   background-color: #0277bd;
 }
 
-/* 波紋背景 */
-/* キャンバスは背面、コンテンツは前面 */
-#bg-ripples {
-  position: fixed;
-  inset: 0;
-  z-index: 0;           /* 背面 */
-  pointer-events: none;
-}
-
-header, #horn-toolbar, #horn-container {
-  position: relative;
-  z-index: 10;          /* 前面（キャンバスより上） */
-}
-
-
-
 
 
 
