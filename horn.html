@@ -1,72 +1,61 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>クラクション試聴（テスト）</title>
-  <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto; margin:0; padding:1rem; background:#e0f7fa;}
-    h1{margin:0 0 1rem; color:#0288d1;}
-    #horn-container{display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; max-width:600px; margin:0 auto;}
-    .horn-card{background:#fff; border:2px solid #4dd0e1; border-radius:12px; padding:1rem; text-align:center;}
-    .horn-card h3{margin:.2rem 0 .6rem; color:#0288d1; font-size:1rem;}
-    .play-btn{background:#0288d1; color:#fff; border:none; padding:.5rem 1rem; border-radius:8px; cursor:pointer;}
-  </style>
-</head>
-<body>
-  <h1>クラクション試聴（テスト）</h1>
-  <div style="margin:0 0 .75rem; text-align:center;">
-    音量 <input id="vol" type="range" min="0" max="1" step="0.01" value="0.7">
-    <button id="stop">⏹ 停止</button>
-  </div>
+<meta charset="UTF-8">
+<title>音源テスト</title>
+<body style="font-family:system-ui;padding:16px">
+  <h1>音源テスト</h1>
 
-  <main id="horn-container"></main>
+  <!-- 1) ブラウザ標準コントロール -->
+  <p>① 直接再生（コントロール付き）</p>
+  <audio id="a1" controls preload="auto">
+    <!-- m4a優先 + mp3フォールバック -->
+    <source src="./oudio/stock.m4a" type="audio/mp4"> 
+    <source src="./oudio/stock.mp3" type="audio/mpeg">
+    このブラウザは audio に対応していません
+  </audio>
+
+  <hr>
+
+  <!-- 2) クリック再生（自動再生制限対策） -->
+  <p>② ボタンで再生（クリック必須）</p>
+  <button id="play">▶ 再生</button>
+  <button id="stop">⏹ 停止</button>
 
   <script>
-    // ★ 実ファイルの置き場所に合わせて必ず直してください
-    const HORNS = [
-      { id: "h1", name: "クラクション01", file: "./oudio/stock.m4a" },
-      { id: "h2", name: "クラクション02", file: "./oudio/truck.m4a" },
-    ];
+    const el = document.getElementById('a1');
+    const playBtn = document.getElementById('play');
+    const stopBtn = document.getElementById('stop');
 
-    const player = new Audio(); player.preload = "auto"; player.volume = 0.7;
-    let currentId = null;
+    // クリックで確実にユーザー操作を作る
+    playBtn.addEventListener('click', async () => {
+      try {
+        el.currentTime = 0;
+        el.volume = 0.8;
+        await el.play();
+        console.log('play() success');
+      } catch (e) {
+        console.error('play() error:', e);
+        alert('再生に失敗。まずはこのページ内のどこかをクリックしてから、もう一度試してください。');
+      }
+    });
 
-    const container = document.getElementById("horn-container");
-    const vol = document.getElementById("vol");
-    const stop = document.getElementById("stop");
-    vol.addEventListener("input", ()=> player.volume = Number(vol.value));
-    stop.addEventListener("click", ()=>{ player.pause(); player.currentTime = 0; currentId=null; sync(); });
+    stopBtn.addEventListener('click', () => {
+      el.pause();
+      el.currentTime = 0;
+    });
 
-    function render(){
-      container.innerHTML = "";
-      HORNS.forEach(h=>{
-        const card = document.createElement("div");
-        card.className = "horn-card";
-        card.innerHTML = `<h3>${h.name}</h3><button class="play-btn" data-id="${h.id}">▶ 再生</button>`;
-        container.appendChild(card);
-      });
-      container.querySelectorAll(".play-btn").forEach(b=>{
-        b.addEventListener("click", async (e)=>{
-          const id = e.currentTarget.dataset.id;
-          const horn = HORNS.find(x=>x.id===id);
-          if(!horn) return;
-          if(currentId===id && !player.paused){ player.pause(); currentId=null; return sync(); }
-          player.src = horn.file;
-          currentId = id;
-          try{ await player.play(); }catch(err){ alert("最初にページ上でクリックしてから再生してください。"); }
-          sync();
-        });
-      });
-    }
-    function sync(){
-      document.querySelectorAll(".play-btn").forEach(b=>{
-        b.textContent = (b.dataset.id===currentId && !player.paused) ? "⏸ 停止" : "▶ 再生";
-      });
-    }
-    player.addEventListener("ended", ()=>{ currentId=null; sync(); });
-    player.addEventListener("pause", ()=>{ if(player.currentTime===0){ currentId=null; sync(); }});
-    render();
+    // エラーの中身を拾う（原因特定に重要）
+    el.addEventListener('error', () => {
+      const m = el.error?.message || '';
+      const code = el.error?.code;
+      console.error('audio error code:', code, m);
+      // codeの目安: 1=MEDIA_ERR_ABORTED, 2=NETWORK, 3=DECODE, 4=SRC_NOT_SUPPORTED
+      alert('audioエラー: code=' + code + '（コンソールも見てね）');
+    });
+
+    // ブラウザがm4a/mp3を再生できるかの事前チェック
+    console.log('canPlayType m4a:', el.canPlayType('audio/mp4'));
+    console.log('canPlayType mp3:', el.canPlayType('audio/mpeg'));
   </script>
 </body>
 </html>
