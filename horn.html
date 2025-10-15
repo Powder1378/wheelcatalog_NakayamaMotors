@@ -1,5 +1,26 @@
-<main id="horn-container"></main>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>クラクション試聴</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>クラクション試聴</h1>
+    <nav>
+      <a href="index.html">🏠 ホイールカタログ</a>
+      <a href="staff.html">👥 スタッフ紹介</a>
+      <a href="horn.html">🔊 クラクション試聴</a>
+    </nav>
 
+    <div id="horn-toolbar">
+      <label>音量 <input id="horn-volume" type="range" min="0" max="1" step="0.01" value="0.7"></label>
+      <button id="horn-stop" class="btn">⏹ 停止</button>
+    </div>
+  </header>
+
+  
 <script>
   // ここに並べたい音を追加（idは一意に）
   const HORNS = [
