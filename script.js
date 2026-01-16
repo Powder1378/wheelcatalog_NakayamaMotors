@@ -1,657 +1,678 @@
-const data = [
-// Sports  
-  { name: "インフェルノ", image: "./images/SPT_V_1.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "ディープファイブ", image: "./images/SPT_V_2.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "ロズスピード Mr.V", image: "./images/SPT_V_3.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "ダイヤモンドカット", image: "./images/SPT_V_4.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "クロノ", image: "./images/SPT_V_5.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "フェローチRR", image: "./images/SPT_V_6.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "フィフティナイン", image: "./images/SPT_V_7.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "マーシー", image: "./images/SPT_V_8.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "シンセティックZ", image: "./images/SPT_V_9.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "オーガニック・タイプゼロ", image: "./images/SPT_V_10.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "エンドーv.1", image: "./images/SPT_V_11.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "GTワン", image: "./images/SPT_V_12.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "デューバー7", image: "./images/SPT_V_13.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "ウザール", image: "./images/SPT_V_14.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "グラウンドライド", image: "./images/SPT_V_15.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "Sレーサー", image: "./images/SPT_V_16.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "ベナム", image: "./images/SPT_V_17.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "コスモ", image: "./images/SPT_V_18.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "ダッシュVIP", image: "./images/SPT_V_19.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "アイスキッド", image: "./images/SPT_V_20.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "ラウフェルド", image: "./images/SPT_V_21.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "湾岸マスター", image: "./images/SPT_V_22.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "スーパーファイブ", image: "./images/SPT_V_23.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "エンドーv2", image: "./images/SPT_V_24.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  { name: "スプリット・シックス", image: "./images/SPT_V_25.png",type: "Sports",source: "Vanilla",chrome: "True"},
-  /*------------------------------------------- SportsMOD-------------------------------------------*/
-  { name: "Sports51", image: "./images/SPT_M_51.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports52", image: "./images/SPT_M_52.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports53", image: "./images/SPT_M_53.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports54", image: "./images/SPT_M_54.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports55", image: "./images/SPT_M_55.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports56", image: "./images/SPT_M_56.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports57", image: "./images/SPT_M_57.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports58", image: "./images/SPT_M_58.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports59", image: "./images/SPT_M_59.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports60", image: "./images/SPT_M_60.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports61", image: "./images/SPT_M_61.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports62", image: "./images/SPT_M_62.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports63", image: "./images/SPT_M_63.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports64", image: "./images/SPT_M_64.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports65", image: "./images/SPT_M_65.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports66", image: "./images/SPT_M_66.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports67", image: "./images/SPT_M_67.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports68", image: "./images/SPT_M_68.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports69", image: "./images/SPT_M_69.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports70", image: "./images/SPT_M_70.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports71", image: "./images/SPT_M_71.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports72", image: "./images/SPT_M_72.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports73", image: "./images/SPT_M_73.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports74", image: "./images/SPT_M_74.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports75", image: "./images/SPT_M_75.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports76", image: "./images/SPT_M_76.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports77", image: "./images/SPT_M_77.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports78", image: "./images/SPT_M_78.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports79", image: "./images/SPT_M_79.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports80", image: "./images/SPT_M_80.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports81", image: "./images/SPT_M_81.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports82", image: "./images/SPT_M_82.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports83", image: "./images/SPT_M_83.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports84", image: "./images/SPT_M_84.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports85", image: "./images/SPT_M_85.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports86", image: "./images/SPT_M_86.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports87", image: "./images/SPT_M_87.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports88", image: "./images/SPT_M_88.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports89", image: "./images/SPT_M_89.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports90", image: "./images/SPT_M_90.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports91", image: "./images/SPT_M_91.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports92", image: "./images/SPT_M_92.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports93", image: "./images/SPT_M_93.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports94", image: "./images/SPT_M_94.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports95", image: "./images/SPT_M_95.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports96", image: "./images/SPT_M_96.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports97", image: "./images/SPT_M_97.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports98", image: "./images/SPT_M_98.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports99", image: "./images/SPT_M_99.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports100", image: "./images/SPT_M_100.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports101", image: "./images/SPT_M_101.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports102", image: "./images/SPT_M_102.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports103", image: "./images/SPT_M_103.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports104", image: "./images/SPT_M_104.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports105", image: "./images/SPT_M_105.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports106", image: "./images/SPT_M_106.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports107", image: "./images/SPT_M_107.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports108", image: "./images/SPT_M_108.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports109", image: "./images/SPT_M_109.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports110", image: "./images/SPT_M_110.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports111", image: "./images/SPT_M_111.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
-  { name: "Sports112", image: "./images/SPT_M_112.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "False"},
-  { name: "Sports113", image: "./images/SPT_M_113.png", type: "Sports", source: "MOD",chrome: "True", chrome: "False", color: "True"},
+ const wheels = [
+  // ===== Sports : Vanilla =====
+  { name: "インフェルノ", category: "Sports", image: "./images/SPT_V_1.png", type: "Vanilla", chrome: true },
+  { name: "ディープファイブ", category: "Sports", image: "./images/SPT_V_2.png", type: "Vanilla", chrome: true },
+  { name: "ロズスピード Mr.V", category: "Sports", image: "./images/SPT_V_3.png", type: "Vanilla", chrome: true },
+  { name: "ダイヤモンドカット", category: "Sports", image: "./images/SPT_V_4.png", type: "Vanilla", chrome: true },
+  { name: "クロノ", category: "Sports", image: "./images/SPT_V_5.png", type: "Vanilla", chrome: true },
+  { name: "フェローチRR", category: "Sports", image: "./images/SPT_V_6.png", type: "Vanilla", chrome: true },
+  { name: "フィフティナイン", category: "Sports", image: "./images/SPT_V_7.png", type: "Vanilla", chrome: true },
+  { name: "マーシー", category: "Sports", image: "./images/SPT_V_8.png", type: "Vanilla", chrome: true },
+  { name: "シンセティックZ", category: "Sports", image: "./images/SPT_V_9.png", type: "Vanilla", chrome: true },
+  { name: "オーガニック・タイプゼロ", category: "Sports", image: "./images/SPT_V_10.png", type: "Vanilla", chrome: true },
+  { name: "エンドーv.1", category: "Sports", image: "./images/SPT_V_11.png", type: "Vanilla", chrome: true },
+  { name: "GTワン", category: "Sports", image: "./images/SPT_V_12.png", type: "Vanilla", chrome: true },
+  { name: "デューバー7", category: "Sports", image: "./images/SPT_V_13.png", type: "Vanilla", chrome: true },
+  { name: "ウザール", category: "Sports", image: "./images/SPT_V_14.png", type: "Vanilla", chrome: true },
+  { name: "グラウンドライド", category: "Sports", image: "./images/SPT_V_15.png", type: "Vanilla", chrome: true },
+  { name: "Sレーサー", category: "Sports", image: "./images/SPT_V_16.png", type: "Vanilla", chrome: true },
+  { name: "ベナム", category: "Sports", image: "./images/SPT_V_17.png", type: "Vanilla", chrome: true },
+  { name: "コスモ", category: "Sports", image: "./images/SPT_V_18.png", type: "Vanilla", chrome: true },
+  { name: "ダッシュVIP", category: "Sports", image: "./images/SPT_V_19.png", type: "Vanilla", chrome: true },
+  { name: "アイスキッド", category: "Sports", image: "./images/SPT_V_20.png", type: "Vanilla", chrome: true },
+  { name: "ラウフェルド", category: "Sports", image: "./images/SPT_V_21.png", type: "Vanilla", chrome: true },
+  { name: "湾岸マスター", category: "Sports", image: "./images/SPT_V_22.png", type: "Vanilla", chrome: true },
+  { name: "スーパーファイブ", category: "Sports", image: "./images/SPT_V_23.png", type: "Vanilla", chrome: true },
+  { name: "エンドーv2", category: "Sports", image: "./images/SPT_V_24.png", type: "Vanilla", chrome: true },
+  { name: "スプリット・シックス", category: "Sports", image: "./images/SPT_V_25.png", type: "Vanilla", chrome: true },
 
-  
+  // ===== Sports : MOD =====
+  { name: "Sports51", category: "Sports", image: "./images/SPT_M_51.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports52", category: "Sports", image: "./images/SPT_M_52.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports53", category: "Sports", image: "./images/SPT_M_53.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports54", category: "Sports", image: "./images/SPT_M_54.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports55", category: "Sports", image: "./images/SPT_M_55.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports56", category: "Sports", image: "./images/SPT_M_56.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports57", category: "Sports", image: "./images/SPT_M_57.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports58", category: "Sports", image: "./images/SPT_M_58.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports59", category: "Sports", image: "./images/SPT_M_59.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports60", category: "Sports", image: "./images/SPT_M_60.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports61", category: "Sports", image: "./images/SPT_M_61.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports62", category: "Sports", image: "./images/SPT_M_62.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports63", category: "Sports", image: "./images/SPT_M_63.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports64", category: "Sports", image: "./images/SPT_M_64.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports65", category: "Sports", image: "./images/SPT_M_65.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports66", category: "Sports", image: "./images/SPT_M_66.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports67", category: "Sports", image: "./images/SPT_M_67.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports68", category: "Sports", image: "./images/SPT_M_68.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports69", category: "Sports", image: "./images/SPT_M_69.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports70", category: "Sports", image: "./images/SPT_M_70.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports71", category: "Sports", image: "./images/SPT_M_71.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports72", category: "Sports", image: "./images/SPT_M_72.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports73", category: "Sports", image: "./images/SPT_M_73.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports74", category: "Sports", image: "./images/SPT_M_74.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports75", category: "Sports", image: "./images/SPT_M_75.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports76", category: "Sports", image: "./images/SPT_M_76.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports77", category: "Sports", image: "./images/SPT_M_77.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports78", category: "Sports", image: "./images/SPT_M_78.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports79", category: "Sports", image: "./images/SPT_M_79.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports80", category: "Sports", image: "./images/SPT_M_80.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports81", category: "Sports", image: "./images/SPT_M_81.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports82", category: "Sports", image: "./images/SPT_M_82.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports83", category: "Sports", image: "./images/SPT_M_83.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports84", category: "Sports", image: "./images/SPT_M_84.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports85", category: "Sports", image: "./images/SPT_M_85.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports86", category: "Sports", image: "./images/SPT_M_86.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports87", category: "Sports", image: "./images/SPT_M_87.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports88", category: "Sports", image: "./images/SPT_M_88.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports89", category: "Sports", image: "./images/SPT_M_89.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports90", category: "Sports", image: "./images/SPT_M_90.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports91", category: "Sports", image: "./images/SPT_M_91.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports92", category: "Sports", image: "./images/SPT_M_92.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports93", category: "Sports", image: "./images/SPT_M_93.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports94", category: "Sports", image: "./images/SPT_M_94.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports95", category: "Sports", image: "./images/SPT_M_95.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports96", category: "Sports", image: "./images/SPT_M_96.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports97", category: "Sports", image: "./images/SPT_M_97.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports98", category: "Sports", image: "./images/SPT_M_98.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports99", category: "Sports", image: "./images/SPT_M_99.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports100", category: "Sports", image: "./images/SPT_M_100.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports101", category: "Sports", image: "./images/SPT_M_101.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports102", category: "Sports", image: "./images/SPT_M_102.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports103", category: "Sports", image: "./images/SPT_M_103.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports104", category: "Sports", image: "./images/SPT_M_104.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports105", category: "Sports", image: "./images/SPT_M_105.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports106", category: "Sports", image: "./images/SPT_M_106.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports107", category: "Sports", image: "./images/SPT_M_107.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports108", category: "Sports", image: "./images/SPT_M_108.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports109", category: "Sports", image: "./images/SPT_M_109.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports110", category: "Sports", image: "./images/SPT_M_110.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports111", category: "Sports", image: "./images/SPT_M_111.png", type: "MOD", chrome: false, color: true },
+  { name: "Sports112", category: "Sports", image: "./images/SPT_M_112.png", type: "MOD", chrome: false, color: false },
+  { name: "Sports113", category: "Sports", image: "./images/SPT_M_113.png", type: "MOD", chrome: false, color: true },
+
 
   // SUV
-  { name: "VIP", image: "./images/SUV_V_1.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "ベネファクター", image: "./images/SUV_V_2.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "コスモ", image: "./images/SUV_V_3.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "ビップ", image: "./images/SUV_V_4.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "ロイヤル・シックス", image: "./images/SUV_V_5.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "ファゴーム", image: "./images/SUV_V_6.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "デラックス", image: "./images/SUV_V_7.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "アイスド・アウト", image: "./images/SUV_V_8.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "コンシェンティ", image: "./images/SUV_V_9.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "ロズスピード・テン", image: "./images/SUV_V_10.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "スーパーノヴァ", image: "./images/SUV_V_11.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "オベイRS", image: "./images/SUV_V_12.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "ロズスピード・ボーラー", image: "./images/SUV_V_13.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "エクストラバガンゾ", image: "./images/SUV_V_14.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "スプリット・シックス", image: "./images/SUV_V_15.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "エンパワード", image: "./images/SUV_V_16.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "サンライズ", image: "./images/SUV_V_17.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "ダッシュVIP", image: "./images/SUV_V_18.png",type: "SUV",source: "Vanilla",chrome: "True"},
-  { name: "カッター", image: "./images/SUV_V_19.png",type: "SUV",source: "Vanilla",chrome: "True"},
+    // ===== SUV : Vanilla =====
+  { name: "VIP", category: "SUV", image: "./images/SUV_V_1.png", type: "Vanilla", chrome: true },
+  { name: "ベネファクター", category: "SUV", image: "./images/SUV_V_2.png", type: "Vanilla", chrome: true },
+  { name: "コスモ", category: "SUV", image: "./images/SUV_V_3.png", type: "Vanilla", chrome: true },
+  { name: "ビップ", category: "SUV", image: "./images/SUV_V_4.png", type: "Vanilla", chrome: true },
+  { name: "ロイヤル・シックス", category: "SUV", image: "./images/SUV_V_5.png", type: "Vanilla", chrome: true },
+  { name: "ファゴーム", category: "SUV", image: "./images/SUV_V_6.png", type: "Vanilla", chrome: true },
+  { name: "デラックス", category: "SUV", image: "./images/SUV_V_7.png", type: "Vanilla", chrome: true },
+  { name: "アイスド・アウト", category: "SUV", image: "./images/SUV_V_8.png", type: "Vanilla", chrome: true },
+  { name: "コンシェンティ", category: "SUV", image: "./images/SUV_V_9.png", type: "Vanilla", chrome: true },
+  { name: "ロズスピード・テン", category: "SUV", image: "./images/SUV_V_10.png", type: "Vanilla", chrome: true },
+  { name: "スーパーノヴァ", category: "SUV", image: "./images/SUV_V_11.png", type: "Vanilla", chrome: true },
+  { name: "オベイRS", category: "SUV", image: "./images/SUV_V_12.png", type: "Vanilla", chrome: true },
+  { name: "ロズスピード・ボーラー", category: "SUV", image: "./images/SUV_V_13.png", type: "Vanilla", chrome: true },
+  { name: "エクストラバガンゾ", category: "SUV", image: "./images/SUV_V_14.png", type: "Vanilla", chrome: true },
+  { name: "スプリット・シックス", category: "SUV", image: "./images/SUV_V_15.png", type: "Vanilla", chrome: true },
+  { name: "エンパワード", category: "SUV", image: "./images/SUV_V_16.png", type: "Vanilla", chrome: true },
+  { name: "サンライズ", category: "SUV", image: "./images/SUV_V_17.png", type: "Vanilla", chrome: true },
+  { name: "ダッシュVIP", category: "SUV", image: "./images/SUV_V_18.png", type: "Vanilla", chrome: true },
+  { name: "カッター", category: "SUV", image: "./images/SUV_V_19.png", type: "Vanilla", chrome: true },
 
+  // ===== Muscle : Vanilla =====
+  { name: "クラシック・ファイブ", category: "Muscle", image: "./images/MUS_V_1.png", type: "Vanilla", chrome: true },
+  { name: "デュークス", category: "Muscle", image: "./images/MUS_V_2.png", type: "Vanilla", chrome: true },
+  { name: "マッスル・フリーク", category: "Muscle", image: "./images/MUS_V_3.png", type: "Vanilla", chrome: true },
+  { name: "クラッカ", category: "Muscle", image: "./images/MUS_V_4.png", type: "Vanilla", chrome: true },
+  { name: "アズリアル", category: "Muscle", image: "./images/MUS_V_5.png", type: "Vanilla", chrome: true },
+  { name: "メカ", category: "Muscle", image: "./images/MUS_V_6.png", type: "Vanilla", chrome: true },
+  { name: "ブラック・トップ", category: "Muscle", image: "./images/MUS_V_7.png", type: "Vanilla", chrome: true },
+  { name: "ドラッグSPL", category: "Muscle", image: "./images/MUS_V_8.png", type: "Vanilla", chrome: true },
+  { name: "リボルバー", category: "Muscle", image: "./images/MUS_V_9.png", type: "Vanilla", chrome: true },
+  { name: "クラシック・ロッド", category: "Muscle", image: "./images/MUS_V_10.png", type: "Vanilla", chrome: true },
+  { name: "フェアリー", category: "Muscle", image: "./images/MUS_V_11.png", type: "Vanilla", chrome: true },
+  { name: "スプーナー", category: "Muscle", image: "./images/MUS_V_12.png", type: "Vanilla", chrome: true },
+  { name: "ファイブスター", category: "Muscle", image: "./images/MUS_V_13.png", type: "Vanilla", chrome: true },
+  { name: "オールドスクール", category: "Muscle", image: "./images/MUS_V_14.png", type: "Vanilla", chrome: true },
+  { name: "カエル・ヘフェッター", category: "Muscle", image: "./images/MUS_V_15.png", type: "Vanilla", chrome: true },
+  { name: "ドッドマン", category: "Muscle", image: "./images/MUS_V_16.png", type: "Vanilla", chrome: true },
+  { name: "シックス・ガン", category: "Muscle", image: "./images/MUS_V_17.png", type: "Vanilla", chrome: true },
+  { name: "マーセナリー", category: "Muscle", image: "./images/MUS_V_18.png", type: "Vanilla", chrome: true },
 
-  // Muscle
-  { name: "クラシック・ファイブ", image: "./images/MUS_V_1.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "デュークス", image: "./images/MUS_V_2.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "マッスル・フリーク", image: "./images/MUS_V_3.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "クラッカ", image: "./images/MUS_V_4.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "アズリアル", image: "./images/MUS_V_5.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "メカ", image: "./images/MUS_V_6.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "ブラック・トップ", image: "./images/MUS_V_7.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "ドラッグSPL", image: "./images/MUS_V_8.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "リボルバー", image: "./images/MUS_V_9.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "クラシック・ロッド", image: "./images/MUS_V_10.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "フェアリー", image: "./images/MUS_V_11.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "スプーナー", image: "./images/MUS_V_12.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "ファイブスター", image: "./images/MUS_V_13.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "オールドスクール", image: "./images/MUS_V_14.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "カエル・ヘフェッター", image: "./images/MUS_V_15.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "ドッドマン", image: "./images/MUS_V_16.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "シックス・ガン", image: "./images/MUS_V_17.png",type: "Muscle",source: "Vanilla",chrome: "True"},
-  { name: "マーセナリー", image: "./images/MUS_V_18.png",type: "Muscle",source: "Vanilla",chrome: "True"},
+  // ===== Offroad : Vanilla =====
+  { name: "レイダー", category: "Offroad", image: "./images/OFF_V_1.png", type: "Vanilla", chrome: true },
+  { name: "マッドスリンガー", category: "Offroad", image: "./images/OFF_V_2.png", type: "Vanilla", chrome: true },
+  { name: "ネヴィス", category: "Offroad", image: "./images/OFF_V_3.png", type: "Vanilla", chrome: true },
+  { name: "ケアンゴーム", category: "Offroad", image: "./images/OFF_V_4.png", type: "Vanilla", chrome: true },
+  { name: "アマゾン", category: "Offroad", image: "./images/OFF_V_5.png", type: "Vanilla", chrome: true },
+  { name: "チャレンジャー", category: "Offroad", image: "./images/OFF_V_6.png", type: "Vanilla", chrome: true },
+  { name: "デューン・バッシャー", category: "Offroad", image: "./images/OFF_V_7.png", type: "Vanilla", chrome: true },
+  { name: "ファイブスター", category: "Offroad", image: "./images/OFF_V_8.png", type: "Vanilla", chrome: true },
+  { name: "ロッククロウラー", category: "Offroad", image: "./images/OFF_V_9.png", type: "Vanilla", chrome: true },
+  { name: "ミルスペック・スティーリー", category: "Offroad", image: "./images/OFF_V_10.png", type: "Vanilla", chrome: true },
+  { name: "レトロ・スティーリー", category: "Offroad", image: "./images/OFF_V_11.png", type: "Vanilla", chrome: true },
+  { name: "耐久スティーリー", category: "Offroad", image: "./images/OFF_V_12.png", type: "Vanilla", chrome: true },
+  { name: "凹型スティーリー", category: "Offroad", image: "./images/OFF_V_13.png", type: "Vanilla", chrome: true },
+  { name: "警察仕様スティーリー", category: "Offroad", image: "./images/OFF_V_14.png", type: "Vanilla", chrome: true },
+  { name: "軽量スティーリー", category: "Offroad", image: "./images/OFF_V_15.png", type: "Vanilla", chrome: true },
+  { name: "デュークス", category: "Offroad", image: "./images/OFF_V_16.png", type: "Vanilla", chrome: true },
+  { name: "アバランチ", category: "Offroad", image: "./images/OFF_V_17.png", type: "Vanilla", chrome: true },
+  { name: "マウンテンマン", category: "Offroad", image: "./images/OFF_V_18.png", type: "Vanilla", chrome: true },
+  { name: "リッジクライマー", category: "Offroad", image: "./images/OFF_V_19.png", type: "Vanilla", chrome: true },
+  { name: "凸形5", category: "Offroad", image: "./images/OFF_V_20.png", type: "Vanilla", chrome: true },
+  { name: "フラット6", category: "Offroad", image: "./images/OFF_V_21.png", type: "Vanilla", chrome: true },
+  { name: "全地形モンスター", category: "Offroad", image: "./images/OFF_V_22.png", type: "Vanilla", chrome: true },
+  { name: "ドラッグSPL", category: "Offroad", image: "./images/OFF_V_23.png", type: "Vanilla", chrome: true },
+  { name: "凹型ラリーマスター", category: "Offroad", image: "./images/OFF_V_24.png", type: "Vanilla", chrome: true },
+  { name: "凹凸スノーフレーク", category: "Offroad", image: "./images/OFF_V_25.png", type: "Vanilla", chrome: true },
 
-
-  // Offroad
-  { name: "レイダー", image: "./images/OFF_V_1.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "マッドスリンガー", image: "./images/OFF_V_2.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "ネヴィス", image: "./images/OFF_V_3.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "ケアンゴーム", image: "./images/OFF_V_4.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "アマゾン", image: "./images/OFF_V_5.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "チャレンジャー", image: "./images/OFF_V_6.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "デューン・バッシャー", image: "./images/OFF_V_7.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "ファイブスター", image: "./images/OFF_V_8.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "ロッククロウラー", image: "./images/OFF_V_9.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "ミルスペック・スティーリー", image: "./images/OFF_V_10.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "レトロ・スティーリー", image: "./images/OFF_V_11.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "耐久スティーリー", image: "./images/OFF_V_12.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "凹型スティーリー", image: "./images/OFF_V_13.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "警察仕様スティーリー", image: "./images/OFF_V_14.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "軽量スティーリー", image: "./images/OFF_V_15.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "デュークス", image: "./images/OFF_V_16.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "アバランチ", image: "./images/OFF_V_17.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "マウンテンマン", image: "./images/OFF_V_18.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "リッジクライマー", image: "./images/OFF_V_19.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "凸形5", image: "./images/OFF_V_20.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "フラット6", image: "./images/OFF_V_21.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "全地形モンスター", image: "./images/OFF_V_22.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "ドラッグSPL", image: "./images/OFF_V_23.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "凹型ラリーマスター", image: "./images/OFF_V_24.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  { name: "凹凸スノーフレーク", image: "./images/OFF_V_25.png",type: "Offroad",source: "Vanilla",chrome: "True"},
-  /*------------------------------------------- OffroadMOD-------------------------------------------*/
-  { name: "Offroad 36", image: "./images/OFF_M_36.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 37", image: "./images/OFF_M_37.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 38", image: "./images/OFF_M_38.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 39", image: "./images/OFF_M_39.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 40", image: "./images/OFF_M_40.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 41", image: "./images/OFF_M_41.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 42", image: "./images/OFF_M_42.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 43", image: "./images/OFF_M_43.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 44", image: "./images/OFF_M_44.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 45", image: "./images/OFF_M_45.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 46", image: "./images/OFF_M_46.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 47", image: "./images/OFF_M_47.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 48", image: "./images/OFF_M_48.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 49", image: "./images/OFF_M_49.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-  { name: "Offroad 50", image: "./images/OFF_M_50.png",type: "Offroad",source: "MOD",chrome: "True",chrome: "True"},
-
-
-  // Lowrider
-  { name: "フレア", image: "./images/LOW_V_1.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "ワイヤード", image: "./images/LOW_V_2.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "トリプル・ゴールド", image: "./images/LOW_V_3.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "ビッグ・ワーム", image: "./images/LOW_V_4.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "セブン・ファイブス", image: "./images/LOW_V_5.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "スプリットシックス", image: "./images/LOW_V_6.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "フレッシュ・メッシュ", image: "./images/LOW_V_7.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "レッド・スレッド", image: "./images/LOW_V_8.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "ダーバイン", image: "./images/LOW_V_9.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "スーパー・フィン", image: "./images/LOW_V_10.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "クラシック・ロッド", image: "./images/LOW_V_11.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "ダラー", image: "./images/LOW_V_12.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "デュークス", image: "./images/LOW_V_13.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "ロウ・ファイブ", image: "./images/LOW_V_14.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-  { name: "グーチ", image: "./images/LOW_V_15.png", type: "Lowrider", source: "Vanilla",chrome: "True" },
-
-  
-  // Benny's
-  { name: "OGハンネット", image: "./images/BNS_V_1.png", type: "Benny's", source: "Vanilla", chrome: "True" },
-  { name: "ノックオフ", image: "./images/BNS_V_2.png", type: "Benny's", source: "Vanilla", chrome: "True" },
-  { name: "スポークアウト", image: "./images/BNS_V_3.png", type: "Benny's", source: "Vanilla", chrome: "True" },
-  { name: "ビンテージワイヤ", image: "./images/BNS_V_4.png", type: "Benny's", source: "Vanilla", chrome: "True" },
-  { name: "スムージー", image: "./images/BNS_V_5.png", type: "Benny's", source: "Vanilla", chrome: "True" },
-  { name: "ロッド・ミー・アップ", image: "./images/BNS_V_6.png", type: "Benny's", source: "Vanilla", chrome: "True" },
-  { name: "クリーン", image: "./images/BNS_V_7.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "ロッタ・クローム", image: "./images/BNS_V_8.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "スピンドル", image: "./images/BNS_V_9.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "バイキング", image: "./images/BNS_V_10.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "トリプル・スポーク", image: "./images/BNS_V_11.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "ファロー", image: "./images/BNS_V_12.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "タイガー・スタイル", image: "./images/BNS_V_13.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "スリー・ウィーリン", image: "./images/BNS_V_14.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "ビッグ・バー", image: "./images/BNS_V_15.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "バイオハザード", image: "./images/BNS_V_16.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "ウェーブ", image: "./images/BNS_V_17.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "リック・リック", image: "./images/BNS_V_18.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "スパイライザー", image: "./images/BNS_V_19.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "ヒプノティック", image: "./images/BNS_V_20.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "サイコデリック", image: "./images/BNS_V_21.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "ハーフカット", image: "./images/BNS_V_22.png", type: "Benny's", source: "Vanilla", chrome: "False" },
-  { name: "スーパーエレクトリック", image: "./images/BNS_V_23.png", type: "Benny's", source: "Vanilla", chrome: "False" },
+  // ===== Offroad : MOD =====
+  { name: "Offroad 36", category: "Offroad", image: "./images/OFF_M_36.png", type: "MOD", chrome: true },
+  { name: "Offroad 37", category: "Offroad", image: "./images/OFF_M_37.png", type: "MOD", chrome: true },
+  { name: "Offroad 38", category: "Offroad", image: "./images/OFF_M_38.png", type: "MOD", chrome: true },
+  { name: "Offroad 39", category: "Offroad", image: "./images/OFF_M_39.png", type: "MOD", chrome: true },
+  { name: "Offroad 40", category: "Offroad", image: "./images/OFF_M_40.png", type: "MOD", chrome: true },
+  { name: "Offroad 41", category: "Offroad", image: "./images/OFF_M_41.png", type: "MOD", chrome: true },
+  { name: "Offroad 42", category: "Offroad", image: "./images/OFF_M_42.png", type: "MOD", chrome: true },
+  { name: "Offroad 43", category: "Offroad", image: "./images/OFF_M_43.png", type: "MOD", chrome: true },
+  { name: "Offroad 44", category: "Offroad", image: "./images/OFF_M_44.png", type: "MOD", chrome: true },
+  { name: "Offroad 45", category: "Offroad", image: "./images/OFF_M_45.png", type: "MOD", chrome: true },
+  { name: "Offroad 46", category: "Offroad", image: "./images/OFF_M_46.png", type: "MOD", chrome: true },
+  { name: "Offroad 47", category: "Offroad", image: "./images/OFF_M_47.png", type: "MOD", chrome: true },
+  { name: "Offroad 48", category: "Offroad", image: "./images/OFF_M_48.png", type: "MOD", chrome: true },
+  { name: "Offroad 49", category: "Offroad", image: "./images/OFF_M_49.png", type: "MOD", chrome: true },
+  { name: "Offroad 50", category: "Offroad", image: "./images/OFF_M_50.png", type: "MOD", chrome: true },
 
 
 
-  // Bespoke
-  { name: "クローム OG ハネッツ", image: "./images/BSP_V_1.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド OG ハネッツ", image: "./images/BSP_V_2.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム ワイヤーズ", image: "./images/BSP_V_3.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド ワイヤーズ", image: "./images/BSP_V_4.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム スポークド アウト", image: "./images/BSP_V_5.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド スポークド アウト", image: "./images/BSP_V_6.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム ノックオフス", image: "./images/BSP_V_7.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド ノックオフス", image: "./images/BSP_V_8.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム ビガー ワーム", image: "./images/BSP_V_9.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド ビガー ワーム", image: "./images/BSP_V_10.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム ヴィンテージ ワイヤー", image: "./images/BSP_V_11.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド ヴィンテージ ワイヤー", image: "./images/BSP_V_12.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム クラシック ワイヤー", image: "./images/BSP_V_13.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド クラシック ワイヤー", image: "./images/BSP_V_14.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム スムージー", image: "./images/BSP_V_15.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド スムージー", image: "./images/BSP_V_16.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム クラシック ロッド", image: "./images/BSP_V_17.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド クラシック ロッド", image: "./images/BSP_V_18.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム ダラー", image: "./images/BSP_V_19.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド ダラー", image: "./images/BSP_V_20.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム マイティ スター", image: "./images/BSP_V_21.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド マイティ スター", image: "./images/BSP_V_22.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム デカダント ディッシュ", image: "./images/BSP_V_23.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド デカダント ディッシュ", image: "./images/BSP_V_24.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム レイザー スタイル", image: "./images/BSP_V_25.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド レイザー スタイル", image: "./images/BSP_V_26.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム ケルティック ノット", image: "./images/BSP_V_27.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド ケルティック ノット", image: "./images/BSP_V_28.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "クローム ウォリアー ディッシュ", image: "./images/BSP_V_29.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド ウォリアー ディッシュ", image: "./images/BSP_V_30.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
-  { name: "ゴールド ビッグ ドッグ スポークス", image: "./images/BSP_V_31.png", type: "Bespoke", source: "Vanilla",chrome: "False" },
+   // ===== Lowrider : Vanilla =====
+  { name: "フレア", category: "Lowrider", image: "./images/LOW_V_1.png", type: "Vanilla", chrome: true },
+  { name: "ワイヤード", category: "Lowrider", image: "./images/LOW_V_2.png", type: "Vanilla", chrome: true },
+  { name: "トリプル・ゴールド", category: "Lowrider", image: "./images/LOW_V_3.png", type: "Vanilla", chrome: true },
+  { name: "ビッグ・ワーム", category: "Lowrider", image: "./images/LOW_V_4.png", type: "Vanilla", chrome: true },
+  { name: "セブン・ファイブス", category: "Lowrider", image: "./images/LOW_V_5.png", type: "Vanilla", chrome: true },
+  { name: "スプリットシックス", category: "Lowrider", image: "./images/LOW_V_6.png", type: "Vanilla", chrome: true },
+  { name: "フレッシュ・メッシュ", category: "Lowrider", image: "./images/LOW_V_7.png", type: "Vanilla", chrome: true },
+  { name: "レッド・スレッド", category: "Lowrider", image: "./images/LOW_V_8.png", type: "Vanilla", chrome: true },
+  { name: "ダーバイン", category: "Lowrider", image: "./images/LOW_V_9.png", type: "Vanilla", chrome: true },
+  { name: "スーパー・フィン", category: "Lowrider", image: "./images/LOW_V_10.png", type: "Vanilla", chrome: true },
+  { name: "クラシック・ロッド", category: "Lowrider", image: "./images/LOW_V_11.png", type: "Vanilla", chrome: true },
+  { name: "ダラー", category: "Lowrider", image: "./images/LOW_V_12.png", type: "Vanilla", chrome: true },
+  { name: "デュークス", category: "Lowrider", image: "./images/LOW_V_13.png", type: "Vanilla", chrome: true },
+  { name: "ロウ・ファイブ", category: "Lowrider", image: "./images/LOW_V_14.png", type: "Vanilla", chrome: true },
+  { name: "グーチ", category: "Lowrider", image: "./images/LOW_V_15.png", type: "Vanilla", chrome: true },
 
+  // ===== Benny's : Vanilla =====
+  { name: "OGハンネット", category: "Benny's", image: "./images/BNS_V_1.png", type: "Vanilla", chrome: true },
+  { name: "ノックオフ", category: "Benny's", image: "./images/BNS_V_2.png", type: "Vanilla", chrome: true },
+  { name: "スポークアウト", category: "Benny's", image: "./images/BNS_V_3.png", type: "Vanilla", chrome: true },
+  { name: "ビンテージワイヤ", category: "Benny's", image: "./images/BNS_V_4.png", type: "Vanilla", chrome: true },
+  { name: "スムージー", category: "Benny's", image: "./images/BNS_V_5.png", type: "Vanilla", chrome: true },
+  { name: "ロッド・ミー・アップ", category: "Benny's", image: "./images/BNS_V_6.png", type: "Vanilla", chrome: true },
+  { name: "クリーン", category: "Benny's", image: "./images/BNS_V_7.png", type: "Vanilla", chrome: false },
+  { name: "ロッタ・クローム", category: "Benny's", image: "./images/BNS_V_8.png", type: "Vanilla", chrome: false },
+  { name: "スピンドル", category: "Benny's", image: "./images/BNS_V_9.png", type: "Vanilla", chrome: false },
+  { name: "バイキング", category: "Benny's", image: "./images/BNS_V_10.png", type: "Vanilla", chrome: false },
+  { name: "トリプル・スポーク", category: "Benny's", image: "./images/BNS_V_11.png", type: "Vanilla", chrome: false },
+  { name: "ファロー", category: "Benny's", image: "./images/BNS_V_12.png", type: "Vanilla", chrome: false },
+  { name: "タイガー・スタイル", category: "Benny's", image: "./images/BNS_V_13.png", type: "Vanilla", chrome: false },
+  { name: "スリー・ウィーリン", category: "Benny's", image: "./images/BNS_V_14.png", type: "Vanilla", chrome: false },
+  { name: "ビッグ・バー", category: "Benny's", image: "./images/BNS_V_15.png", type: "Vanilla", chrome: false },
+  { name: "バイオハザード", category: "Benny's", image: "./images/BNS_V_16.png", type: "Vanilla", chrome: false },
+  { name: "ウェーブ", category: "Benny's", image: "./images/BNS_V_17.png", type: "Vanilla", chrome: false },
+  { name: "リック・リック", category: "Benny's", image: "./images/BNS_V_18.png", type: "Vanilla", chrome: false },
+  { name: "スパイライザー", category: "Benny's", image: "./images/BNS_V_19.png", type: "Vanilla", chrome: false },
+  { name: "ヒプノティック", category: "Benny's", image: "./images/BNS_V_20.png", type: "Vanilla", chrome: false },
+  { name: "サイコデリック", category: "Benny's", image: "./images/BNS_V_21.png", type: "Vanilla", chrome: false },
+  { name: "ハーフカット", category: "Benny's", image: "./images/BNS_V_22.png", type: "Vanilla", chrome: false },
+  { name: "スーパーエレクトリック", category: "Benny's", image: "./images/BNS_V_23.png", type: "Vanilla", chrome: false },
 
-  // Rally
-  { name: "ラリー スローバック", image: "./images/RLY_V_1.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "グラベル トラップ", image: "./images/RLY_V_2.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "ストーブ トップ", image: "./images/RLY_V_3.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "ストーブ トップ メッシュ", image: "./images/RLY_V_4.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "レトロ スリー ピース", image: "./images/RLY_V_5.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "ラリー モノブロック", image: "./images/RLY_V_6.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "フォージド ファイブ", image: "./images/RLY_V_7.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "スプリット スター", image: "./images/RLY_V_8.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "スピード ボーイ", image: "./images/RLY_V_9.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "ナインティーズ ランニング", image: "./images/RLY_V_10.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "トロポス", image: "./images/RLY_V_11.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "エクソス", image: "./images/RLY_V_12.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "ハイ ファイブ", image: "./images/RLY_V_13.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "スーパー ラックス", image: "./images/RLY_V_14.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "ピュア ビジネス", image: "./images/RLY_V_15.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "ペッパー ポット", image: "./images/RLY_V_16.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "ブラックトップ ブレンダー", image: "./images/RLY_V_17.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "スローバック", image: "./images/RLY_V_18.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "エクスプレスウェイ", image: "./images/RLY_V_19.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "ヒドゥン シックス", image: "./images/RLY_V_20.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "ディンカ SPL", image: "./images/RLY_V_21.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "レトロ ターボファン", image: "./images/RLY_V_22.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "コニカル ターボファン", image: "./images/RLY_V_23.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "アイス ストーム", image: "./images/RLY_V_24.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "スーパー タービン", image: "./images/RLY_V_25.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "モダン メッシュ", image: "./images/RLY_V_26.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "フォージド スター", image: "./images/RLY_V_27.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "スノーフレーク", image: "./images/RLY_V_28.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "ギガ メッシュ", image: "./images/RLY_V_29.png", type: "Rally", source: "Vanilla", chrome: "False" },
-  { name: "メッシュ マイスター", image: "./images/RLY_V_30.png", type: "Rally", source: "Vanilla", chrome: "False" },
+  // ===== Bespoke : Vanilla =====
+  { name: "クローム OG ハネッツ", category: "Bespoke", image: "./images/BSP_V_1.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド OG ハネッツ", category: "Bespoke", image: "./images/BSP_V_2.png", type: "Vanilla", chrome: false },
+  { name: "クローム ワイヤーズ", category: "Bespoke", image: "./images/BSP_V_3.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド ワイヤーズ", category: "Bespoke", image: "./images/BSP_V_4.png", type: "Vanilla", chrome: false },
+  { name: "クローム スポークド アウト", category: "Bespoke", image: "./images/BSP_V_5.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド スポークド アウト", category: "Bespoke", image: "./images/BSP_V_6.png", type: "Vanilla", chrome: false },
+  { name: "クローム ノックオフス", category: "Bespoke", image: "./images/BSP_V_7.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド ノックオフス", category: "Bespoke", image: "./images/BSP_V_8.png", type: "Vanilla", chrome: false },
+  { name: "クローム ビガー ワーム", category: "Bespoke", image: "./images/BSP_V_9.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド ビガー ワーム", category: "Bespoke", image: "./images/BSP_V_10.png", type: "Vanilla", chrome: false },
+  { name: "クローム ヴィンテージ ワイヤー", category: "Bespoke", image: "./images/BSP_V_11.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド ヴィンテージ ワイヤー", category: "Bespoke", image: "./images/BSP_V_12.png", type: "Vanilla", chrome: false },
+  { name: "クローム クラシック ワイヤー", category: "Bespoke", image: "./images/BSP_V_13.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド クラシック ワイヤー", category: "Bespoke", image: "./images/BSP_V_14.png", type: "Vanilla", chrome: false },
+  { name: "クローム スムージー", category: "Bespoke", image: "./images/BSP_V_15.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド スムージー", category: "Bespoke", image: "./images/BSP_V_16.png", type: "Vanilla", chrome: false },
+  { name: "クローム クラシック ロッド", category: "Bespoke", image: "./images/BSP_V_17.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド クラシック ロッド", category: "Bespoke", image: "./images/BSP_V_18.png", type: "Vanilla", chrome: false },
+  { name: "クローム ダラー", category: "Bespoke", image: "./images/BSP_V_19.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド ダラー", category: "Bespoke", image: "./images/BSP_V_20.png", type: "Vanilla", chrome: false },
+  { name: "クローム マイティ スター", category: "Bespoke", image: "./images/BSP_V_21.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド マイティ スター", category: "Bespoke", image: "./images/BSP_V_22.png", type: "Vanilla", chrome: false },
+  { name: "クローム デカダント ディッシュ", category: "Bespoke", image: "./images/BSP_V_23.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド デカダント ディッシュ", category: "Bespoke", image: "./images/BSP_V_24.png", type: "Vanilla", chrome: false },
+  { name: "クローム レイザー スタイル", category: "Bespoke", image: "./images/BSP_V_25.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド レイザー スタイル", category: "Bespoke", image: "./images/BSP_V_26.png", type: "Vanilla", chrome: false },
+  { name: "クローム ケルティック ノット", category: "Bespoke", image: "./images/BSP_V_27.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド ケルティック ノット", category: "Bespoke", image: "./images/BSP_V_28.png", type: "Vanilla", chrome: false },
+  { name: "クローム ウォリアー ディッシュ", category: "Bespoke", image: "./images/BSP_V_29.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド ウォリアー ディッシュ", category: "Bespoke", image: "./images/BSP_V_30.png", type: "Vanilla", chrome: false },
+  { name: "ゴールド ビッグ ドッグ スポークス", category: "Bespoke", image: "./images/BSP_V_31.png", type: "Vanilla", chrome: false },
+
+  // ===== Rally : Vanilla =====
+  { name: "ラリー スローバック", category: "Rally", image: "./images/RLY_V_1.png", type: "Vanilla", chrome: false },
+  { name: "グラベル トラップ", category: "Rally", image: "./images/RLY_V_2.png", type: "Vanilla", chrome: false },
+  { name: "ストーブ トップ", category: "Rally", image: "./images/RLY_V_3.png", type: "Vanilla", chrome: false },
+  { name: "ストーブ トップ メッシュ", category: "Rally", image: "./images/RLY_V_4.png", type: "Vanilla", chrome: false },
+  { name: "レトロ スリー ピース", category: "Rally", image: "./images/RLY_V_5.png", type: "Vanilla", chrome: false },
+  { name: "ラリー モノブロック", category: "Rally", image: "./images/RLY_V_6.png", type: "Vanilla", chrome: false },
+  { name: "フォージド ファイブ", category: "Rally", image: "./images/RLY_V_7.png", type: "Vanilla", chrome: false },
+  { name: "スプリット スター", category: "Rally", image: "./images/RLY_V_8.png", type: "Vanilla", chrome: false },
+  { name: "スピード ボーイ", category: "Rally", image: "./images/RLY_V_9.png", type: "Vanilla", chrome: false },
+  { name: "ナインティーズ ランニング", category: "Rally", image: "./images/RLY_V_10.png", type: "Vanilla", chrome: false },
+  { name: "トロポス", category: "Rally", image: "./images/RLY_V_11.png", type: "Vanilla", chrome: false },
+  { name: "エクソス", category: "Rally", image: "./images/RLY_V_12.png", type: "Vanilla", chrome: false },
+  { name: "ハイ ファイブ", category: "Rally", image: "./images/RLY_V_13.png", type: "Vanilla", chrome: false },
+  { name: "スーパー ラックス", category: "Rally", image: "./images/RLY_V_14.png", type: "Vanilla", chrome: false },
+  { name: "ピュア ビジネス", category: "Rally", image: "./images/RLY_V_15.png", type: "Vanilla", chrome: false },
+  { name: "ペッパー ポット", category: "Rally", image: "./images/RLY_V_16.png", type: "Vanilla", chrome: false },
+  { name: "ブラックトップ ブレンダー", category: "Rally", image: "./images/RLY_V_17.png", type: "Vanilla", chrome: false },
+  { name: "スローバック", category: "Rally", image: "./images/RLY_V_18.png", type: "Vanilla", chrome: false },
+  { name: "エクスプレスウェイ", category: "Rally", image: "./images/RLY_V_19.png", type: "Vanilla", chrome: false },
+  { name: "ヒドゥン シックス", category: "Rally", image: "./images/RLY_V_20.png", type: "Vanilla", chrome: false },
+  { name: "ディンカ SPL", category: "Rally", image: "./images/RLY_V_21.png", type: "Vanilla", chrome: false },
+  { name: "レトロ ターボファン", category: "Rally", image: "./images/RLY_V_22.png", type: "Vanilla", chrome: false },
+  { name: "コニカル ターボファン", category: "Rally", image: "./images/RLY_V_23.png", type: "Vanilla", chrome: false },
+  { name: "アイス ストーム", category: "Rally", image: "./images/RLY_V_24.png", type: "Vanilla", chrome: false },
+  { name: "スーパー タービン", category: "Rally", image: "./images/RLY_V_25.png", type: "Vanilla", chrome: false },
+  { name: "モダン メッシュ", category: "Rally", image: "./images/RLY_V_26.png", type: "Vanilla", chrome: false },
+  { name: "フォージド スター", category: "Rally", image: "./images/RLY_V_27.png", type: "Vanilla", chrome: false },
+  { name: "スノーフレーク", category: "Rally", image: "./images/RLY_V_28.png", type: "Vanilla", chrome: false },
+  { name: "ギガ メッシュ", category: "Rally", image: "./images/RLY_V_29.png", type: "Vanilla", chrome: false },
+  { name: "メッシュ マイスター", category: "Rally", image: "./images/RLY_V_30.png", type: "Vanilla", chrome: false },
+
 
 
   // Street
-  { name: "レトロ スティーリー", image: "./images/STR_V_1.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "ポバティ スペック スティーリー", image: "./images/STR_V_2.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "コンケイブ スティーリー", image: "./images/STR_V_3.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "ネビュラ", image: "./images/STR_V_4.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "ホットリング スティーリー", image: "./images/STR_V_5.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "カップ チャンピオン", image: "./images/STR_V_6.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "スタンスト EG カスタム", image: "./images/STR_V_7.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "クラッカ カスタム", image: "./images/STR_V_8.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "デュークス カスタム", image: "./images/STR_V_9.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "エンド v.3 カスタム", image: "./images/STR_V_10.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "V8 キラー", image: "./images/STR_V_11.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "フジワラ カスタム", image: "./images/STR_V_12.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "コスモ MKII", image: "./images/STR_V_13.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "エアロ スター", image: "./images/STR_V_14.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "ハイプ ファイブ", image: "./images/STR_V_15.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "ラフ ウェルド メガ ディープ", image: "./images/STR_V_16.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "メルシー コンケイブ", image: "./images/STR_V_17.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "スゴイ コンケイブ", image: "./images/STR_V_18.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "シンセティック Z コンケイブ", image: "./images/STR_V_19.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "エンド v.4 ディッシュド", image: "./images/STR_V_20.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "ハイパーフレッシュ", image: "./images/STR_V_21.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "トルファデ コンケイブ", image: "./images/STR_V_22.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "オーガニック タイプ II", image: "./images/STR_V_23.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "ビッグ マンバ", image: "./images/STR_V_24.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "ディープ フレーク", image: "./images/STR_V_25.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "コスモ MKIII", image: "./images/STR_V_26.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "コンケイブ レーサー", image: "./images/STR_V_27.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "ディープ フレーク リバース", image: "./images/STR_V_28.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "ワイルド ワゴン", image: "./images/STR_V_29.png", type: "Street", source: "Vanilla",chrome: "False" },
-  { name: "コンケイブ メガ メッシュ", image: "./images/STR_V_30.png", type: "Street", source: "Vanilla",chrome: "False" },
+   // ===== Street : Vanilla =====
+  { name: "レトロ スティーリー", category: "Street", image: "./images/STR_V_1.png", type: "Vanilla", chrome: false },
+  { name: "ポバティ スペック スティーリー", category: "Street", image: "./images/STR_V_2.png", type: "Vanilla", chrome: false },
+  { name: "コンケイブ スティーリー", category: "Street", image: "./images/STR_V_3.png", type: "Vanilla", chrome: false },
+  { name: "ネビュラ", category: "Street", image: "./images/STR_V_4.png", type: "Vanilla", chrome: false },
+  { name: "ホットリング スティーリー", category: "Street", image: "./images/STR_V_5.png", type: "Vanilla", chrome: false },
+  { name: "カップ チャンピオン", category: "Street", image: "./images/STR_V_6.png", type: "Vanilla", chrome: false },
+  { name: "スタンスト EG カスタム", category: "Street", image: "./images/STR_V_7.png", type: "Vanilla", chrome: false },
+  { name: "クラッカ カスタム", category: "Street", image: "./images/STR_V_8.png", type: "Vanilla", chrome: false },
+  { name: "デュークス カスタム", category: "Street", image: "./images/STR_V_9.png", type: "Vanilla", chrome: false },
+  { name: "エンド v.3 カスタム", category: "Street", image: "./images/STR_V_10.png", type: "Vanilla", chrome: false },
+  { name: "V8 キラー", category: "Street", image: "./images/STR_V_11.png", type: "Vanilla", chrome: false },
+  { name: "フジワラ カスタム", category: "Street", image: "./images/STR_V_12.png", type: "Vanilla", chrome: false },
+  { name: "コスモ MKII", category: "Street", image: "./images/STR_V_13.png", type: "Vanilla", chrome: false },
+  { name: "エアロ スター", category: "Street", image: "./images/STR_V_14.png", type: "Vanilla", chrome: false },
+  { name: "ハイプ ファイブ", category: "Street", image: "./images/STR_V_15.png", type: "Vanilla", chrome: false },
+  { name: "ラフ ウェルド メガ ディープ", category: "Street", image: "./images/STR_V_16.png", type: "Vanilla", chrome: false },
+  { name: "メルシー コンケイブ", category: "Street", image: "./images/STR_V_17.png", type: "Vanilla", chrome: false },
+  { name: "スゴイ コンケイブ", category: "Street", image: "./images/STR_V_18.png", type: "Vanilla", chrome: false },
+  { name: "シンセティック Z コンケイブ", category: "Street", image: "./images/STR_V_19.png", type: "Vanilla", chrome: false },
+  { name: "エンド v.4 ディッシュド", category: "Street", image: "./images/STR_V_20.png", type: "Vanilla", chrome: false },
+  { name: "ハイパーフレッシュ", category: "Street", image: "./images/STR_V_21.png", type: "Vanilla", chrome: false },
+  { name: "トルファデ コンケイブ", category: "Street", image: "./images/STR_V_22.png", type: "Vanilla", chrome: false },
+  { name: "オーガニック タイプ II", category: "Street", image: "./images/STR_V_23.png", type: "Vanilla", chrome: false },
+  { name: "ビッグ マンバ", category: "Street", image: "./images/STR_V_24.png", type: "Vanilla", chrome: false },
+  { name: "ディープ フレーク", category: "Street", image: "./images/STR_V_25.png", type: "Vanilla", chrome: false },
+  { name: "コスモ MKIII", category: "Street", image: "./images/STR_V_26.png", type: "Vanilla", chrome: false },
+  { name: "コンケイブ レーサー", category: "Street", image: "./images/STR_V_27.png", type: "Vanilla", chrome: false },
+  { name: "ディープ フレーク リバース", category: "Street", image: "./images/STR_V_28.png", type: "Vanilla", chrome: false },
+  { name: "ワイルド ワゴン", category: "Street", image: "./images/STR_V_29.png", type: "Vanilla", chrome: false },
+  { name: "コンケイブ メガ メッシュ", category: "Street", image: "./images/STR_V_30.png", type: "Vanilla", chrome: false },
 
+  // ===== HighEnd : Vanilla =====
+  { name: "シャドウ", category: "HighEnd", image: "./images/HED_V_1.png", type: "Vanilla", chrome: true },
+  { name: "ハイパー", category: "HighEnd", image: "./images/HED_V_2.png", type: "Vanilla", chrome: true },
+  { name: "ブレード", category: "HighEnd", image: "./images/HED_V_3.png", type: "Vanilla", chrome: true },
+  { name: "ダイアモンド", category: "HighEnd", image: "./images/HED_V_4.png", type: "Vanilla", chrome: true },
+  { name: "スパ ジー", category: "HighEnd", image: "./images/HED_V_5.png", type: "Vanilla", chrome: true },
+  { name: "クロマティック ゼット", category: "HighEnd", image: "./images/HED_V_6.png", type: "Vanilla", chrome: true },
+  { name: "マーシー ch.リップ", category: "HighEnd", image: "./images/HED_V_7.png", type: "Vanilla", chrome: true },
+  { name: "オベイ RS", category: "HighEnd", image: "./images/HED_V_8.png", type: "Vanilla", chrome: true },
+  { name: "GT クローム", category: "HighEnd", image: "./images/HED_V_9.png", type: "Vanilla", chrome: true },
+  { name: "チーター R", category: "HighEnd", image: "./images/HED_V_10.png", type: "Vanilla", chrome: true },
+  { name: "ソーラー", category: "HighEnd", image: "./images/HED_V_11.png", type: "Vanilla", chrome: true },
+  { name: "スプリット テン", category: "HighEnd", image: "./images/HED_V_12.png", type: "Vanilla", chrome: true },
+  { name: "ダッシュ VIP", category: "HighEnd", image: "./images/HED_V_13.png", type: "Vanilla", chrome: true },
+  { name: "ロズスピード テン", category: "HighEnd", image: "./images/HED_V_14.png", type: "Vanilla", chrome: true },
+  { name: "カーボン インフェルノ", category: "HighEnd", image: "./images/HED_V_15.png", type: "Vanilla", chrome: true },
+  { name: "カーボン シャドウ", category: "HighEnd", image: "./images/HED_V_16.png", type: "Vanilla", chrome: true },
+  { name: "カーボン ゼット", category: "HighEnd", image: "./images/HED_V_17.png", type: "Vanilla", chrome: true },
+  { name: "カーボン ソーラー", category: "HighEnd", image: "./images/HED_V_18.png", type: "Vanilla", chrome: true },
+  { name: "カーボン チーター R", category: "HighEnd", image: "./images/HED_V_19.png", type: "Vanilla", chrome: true },
+  { name: "カーボン S レーサー", category: "HighEnd", image: "./images/HED_V_20.png", type: "Vanilla", chrome: true },
 
-  // HighEnd
-  { name: "シャドウ", image: "./images/HED_V_1.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "ハイパー", image: "./images/HED_V_2.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "ブレード", image: "./images/HED_V_3.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "ダイアモンド", image: "./images/HED_V_4.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "スパ ジー", image: "./images/HED_V_5.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "クロマティック ゼット", image: "./images/HED_V_6.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "マーシー ch.リップ", image: "./images/HED_V_7.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "オベイ RS", image: "./images/HED_V_8.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "GT クローム", image: "./images/HED_V_9.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "チーター R", image: "./images/HED_V_10.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "ソーラー", image: "./images/HED_V_11.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "スプリット テン", image: "./images/HED_V_12.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "ダッシュ VIP", image: "./images/HED_V_13.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "ロズスピード テン", image: "./images/HED_V_14.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "カーボン インフェルノ", image: "./images/HED_V_15.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "カーボン シャドウ", image: "./images/HED_V_16.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "カーボン ゼット", image: "./images/HED_V_17.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "カーボン ソーラー", image: "./images/HED_V_18.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "カーボン チーター R", image: "./images/HED_V_19.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-  { name: "カーボン S レーサー", image: "./images/HED_V_20.png", type: "HighEnd", source: "Vanilla",chrome: "True" },
-/*------------------------------------------- HighEndMOD-------------------------------------------*/
-  { name: "HighEnd 41", image: "./images/HED_M_41.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 42", image: "./images/HED_M_42.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 43", image: "./images/HED_M_43.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 44", image: "./images/HED_M_44.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 45", image: "./images/HED_M_45.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 46", image: "./images/HED_M_46.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 47", image: "./images/HED_M_47.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 48", image: "./images/HED_M_48.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 49", image: "./images/HED_M_49.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 50", image: "./images/HED_M_50.png", type: "HighEnd", source: "MOD",chrome: "True" },
+  // ===== HighEnd : MOD =====
+  { name: "HighEnd 41", category: "HighEnd", image: "./images/HED_M_41.png", type: "MOD", chrome: true },
+  { name: "HighEnd 42", category: "HighEnd", image: "./images/HED_M_42.png", type: "MOD", chrome: true },
+  { name: "HighEnd 43", category: "HighEnd", image: "./images/HED_M_43.png", type: "MOD", chrome: true },
+  { name: "HighEnd 44", category: "HighEnd", image: "./images/HED_M_44.png", type: "MOD", chrome: true },
+  { name: "HighEnd 45", category: "HighEnd", image: "./images/HED_M_45.png", type: "MOD", chrome: true },
+  { name: "HighEnd 46", category: "HighEnd", image: "./images/HED_M_46.png", type: "MOD", chrome: true },
+  { name: "HighEnd 47", category: "HighEnd", image: "./images/HED_M_47.png", type: "MOD", chrome: true },
+  { name: "HighEnd 48", category: "HighEnd", image: "./images/HED_M_48.png", type: "MOD", chrome: true },
+  { name: "HighEnd 49", category: "HighEnd", image: "./images/HED_M_49.png", type: "MOD", chrome: true },
+  { name: "HighEnd 50", category: "HighEnd", image: "./images/HED_M_50.png", type: "MOD", chrome: true },
   { name: "HighEnd 51", image: "./images/HED_M_51.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 52", image: "./images/HED_M_52.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 53", image: "./images/HED_M_53.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 54", image: "./images/HED_M_54.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 55", image: "./images/HED_M_55.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 56", image: "./images/HED_M_56.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 67", image: "./images/HED_M_57.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 68", image: "./images/HED_M_58.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 59", image: "./images/HED_M_59.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 60", image: "./images/HED_M_60.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 61", image: "./images/HED_M_61.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 62", image: "./images/HED_M_62.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 63", image: "./images/HED_M_63.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 64", image: "./images/HED_M_64.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 65", image: "./images/HED_M_65.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 66", image: "./images/HED_M_66.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 67", image: "./images/HED_M_67.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 68", image: "./images/HED_M_68.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 69", image: "./images/HED_M_69.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 70", image: "./images/HED_M_70.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 71", image: "./images/HED_M_71.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 72", image: "./images/HED_M_72.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 73", image: "./images/HED_M_73.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 74", image: "./images/HED_M_74.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 75", image: "./images/HED_M_75.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 76", image: "./images/HED_M_76.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 77", image: "./images/HED_M_77.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 78", image: "./images/HED_M_78.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 79", image: "./images/HED_M_79.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 80", image: "./images/HED_M_80.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 81", image: "./images/HED_M_81.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 82", image: "./images/HED_M_82.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 83", image: "./images/HED_M_83.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 84", image: "./images/HED_M_84.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 85", image: "./images/HED_M_85.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 86", image: "./images/HED_M_86.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 87", image: "./images/HED_M_87.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 88", image: "./images/HED_M_88.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 89", image: "./images/HED_M_89.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 90", image: "./images/HED_M_90.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 91", image: "./images/HED_M_91.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 92", image: "./images/HED_M_92.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 93", image: "./images/HED_M_93.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 94", image: "./images/HED_M_94.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 95", image: "./images/HED_M_95.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 96", image: "./images/HED_M_96.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 97", image: "./images/HED_M_97.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 98", image: "./images/HED_M_98.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 99", image: "./images/HED_M_99.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 100", image: "./images/HED_M_100.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 101", image: "./images/HED_M_101.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 102", image: "./images/HED_M_102.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 103", image: "./images/HED_M_103.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 104", image: "./images/HED_M_104.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 105", image: "./images/HED_M_105.png", type: "HighEnd", source: "MOD",chrome: "True" },
-  { name: "HighEnd 106", image: "./images/HED_M_106.png", type: "HighEnd", source: "MOD",chrome: "True" },
+  { name: "HighEnd 51", category: "HighEnd", image: "./images/HED_M_51.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 52", category: "HighEnd", image: "./images/HED_M_52.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 53", category: "HighEnd", image: "./images/HED_M_53.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 54", category: "HighEnd", image: "./images/HED_M_54.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 55", category: "HighEnd", image: "./images/HED_M_55.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 56", category: "HighEnd", image: "./images/HED_M_56.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 57", category: "HighEnd", image: "./images/HED_M_57.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 58", category: "HighEnd", image: "./images/HED_M_58.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 59", category: "HighEnd", image: "./images/HED_M_59.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 60", category: "HighEnd", image: "./images/HED_M_60.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 61", category: "HighEnd", image: "./images/HED_M_61.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 62", category: "HighEnd", image: "./images/HED_M_62.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 63", category: "HighEnd", image: "./images/HED_M_63.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 64", category: "HighEnd", image: "./images/HED_M_64.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 65", category: "HighEnd", image: "./images/HED_M_65.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 66", category: "HighEnd", image: "./images/HED_M_66.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 67", category: "HighEnd", image: "./images/HED_M_67.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 68", category: "HighEnd", image: "./images/HED_M_68.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 69", category: "HighEnd", image: "./images/HED_M_69.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 70", category: "HighEnd", image: "./images/HED_M_70.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 71", category: "HighEnd", image: "./images/HED_M_71.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 72", category: "HighEnd", image: "./images/HED_M_72.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 73", category: "HighEnd", image: "./images/HED_M_73.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 74", category: "HighEnd", image: "./images/HED_M_74.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 75", category: "HighEnd", image: "./images/HED_M_75.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 76", category: "HighEnd", image: "./images/HED_M_76.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 77", category: "HighEnd", image: "./images/HED_M_77.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 78", category: "HighEnd", image: "./images/HED_M_78.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 79", category: "HighEnd", image: "./images/HED_M_79.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 80", category: "HighEnd", image: "./images/HED_M_80.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 81", category: "HighEnd", image: "./images/HED_M_81.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 82", category: "HighEnd", image: "./images/HED_M_82.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 83", category: "HighEnd", image: "./images/HED_M_83.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 84", category: "HighEnd", image: "./images/HED_M_84.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 85", category: "HighEnd", image: "./images/HED_M_85.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 86", category: "HighEnd", image: "./images/HED_M_86.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 87", category: "HighEnd", image: "./images/HED_M_87.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 88", category: "HighEnd", image: "./images/HED_M_88.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 89", category: "HighEnd", image: "./images/HED_M_89.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 90", category: "HighEnd", image: "./images/HED_M_90.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 91", category: "HighEnd", image: "./images/HED_M_91.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 92", category: "HighEnd", image: "./images/HED_M_92.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 93", category: "HighEnd", image: "./images/HED_M_93.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 94", category: "HighEnd", image: "./images/HED_M_94.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 95", category: "HighEnd", image: "./images/HED_M_95.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 96", category: "HighEnd", image: "./images/HED_M_96.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 97", category: "HighEnd", image: "./images/HED_M_97.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 98", category: "HighEnd", image: "./images/HED_M_98.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 99", category: "HighEnd", image: "./images/HED_M_99.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 100", category: "HighEnd", image: "./images/HED_M_100.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 101", category: "HighEnd", image: "./images/HED_M_101.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 102", category: "HighEnd", image: "./images/HED_M_102.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 103", category: "HighEnd", image: "./images/HED_M_103.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 104", category: "HighEnd", image: "./images/HED_M_104.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 105", category: "HighEnd", image: "./images/HED_M_105.png", type: "MOD", chrome: true },
+　{ name: "HighEnd 106", category: "HighEnd", image: "./images/HED_M_106.png", type: "MOD", chrome: true },
+　
   
   
 
   // Tuner
-  { name: "コスモ", image: "./images/TNR_V_1.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "スーパー メッシュ", image: "./images/TNR_V_2.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "アウトサイダー", image: "./images/TNR_V_3.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "ローラス", image: "./images/TNR_V_4.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "ドリフマイスター", image: "./images/TNR_V_5.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "スライサー", image: "./images/TNR_V_6.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "エル クアトロ", image: "./images/TNR_V_7.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "ダブド", image: "./images/TNR_V_8.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "ファイブ スター", image: "./images/TNR_V_9.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "スライドウェイズ", image: "./images/TNR_V_10.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "エイペックス", image: "./images/TNR_V_11.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "スタンスド EG", image: "./images/TNR_V_12.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "カウンターステア", image: "./images/TNR_V_13.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "エンド v.1", image: "./images/TNR_V_14.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "エンド v.2", image: "./images/TNR_V_15.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "グルッペ Z", image: "./images/TNR_V_16.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "チョクドリ", image: "./images/TNR_V_17.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "シケイン", image: "./images/TNR_V_18.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "サイソク", image: "./images/TNR_V_19.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "ディッシュド エイト", image: "./images/TNR_V_20.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "フジワラ", image: "./images/TNR_V_21.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "ゾクシャ", image: "./images/TNR_V_22.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "バトル エイト", image: "./images/TNR_V_23.png", type: "Tuner", source: "Vanilla",chrome: "False" },
-  { name: "ラリー マスター", image: "./images/TNR_V_24.png", type: "Tuner", source: "Vanilla",chrome: "False" },
+　{ name: "コスモ", category: "Tuner", image: "./images/TNR_V_1.png", type: "Vanilla", chrome: false },
+  { name: "スーパー メッシュ", category: "Tuner", image: "./images/TNR_V_2.png", type: "Vanilla", chrome: false },
+  { name: "アウトサイダー", category: "Tuner", image: "./images/TNR_V_3.png", type: "Vanilla", chrome: false },
+  { name: "ローラス", category: "Tuner", image: "./images/TNR_V_4.png", type: "Vanilla", chrome: false },
+  { name: "ドリフマイスター", category: "Tuner", image: "./images/TNR_V_5.png", type: "Vanilla", chrome: false },
+  { name: "スライサー", category: "Tuner", image: "./images/TNR_V_6.png", type: "Vanilla", chrome: false },
+  { name: "エル クアトロ", category: "Tuner", image: "./images/TNR_V_7.png", type: "Vanilla", chrome: false },
+  { name: "ダブド", category: "Tuner", image: "./images/TNR_V_8.png", type: "Vanilla", chrome: false },
+  { name: "ファイブ スター", category: "Tuner", image: "./images/TNR_V_9.png", type: "Vanilla", chrome: false },
+  { name: "スライドウェイズ", category: "Tuner", image: "./images/TNR_V_10.png", type: "Vanilla", chrome: false },
+  { name: "エイペックス", category: "Tuner", image: "./images/TNR_V_11.png", type: "Vanilla", chrome: false },
+  { name: "スタンスド EG", category: "Tuner", image: "./images/TNR_V_12.png", type: "Vanilla", chrome: false },
+  { name: "カウンターステア", category: "Tuner", image: "./images/TNR_V_13.png", type: "Vanilla", chrome: false },
+  { name: "エンド v.1", category: "Tuner", image: "./images/TNR_V_14.png", type: "Vanilla", chrome: false },
+  { name: "エンド v.2", category: "Tuner", image: "./images/TNR_V_15.png", type: "Vanilla", chrome: false },
+  { name: "グルッペ Z", category: "Tuner", image: "./images/TNR_V_16.png", type: "Vanilla", chrome: false },
+  { name: "チョクドリ", category: "Tuner", image: "./images/TNR_V_17.png", type: "Vanilla", chrome: false },
+  { name: "シケイン", category: "Tuner", image: "./images/TNR_V_18.png", type: "Vanilla", chrome: false },
+  { name: "サイソク", category: "Tuner", image: "./images/TNR_V_19.png", type: "Vanilla", chrome: false },
+  { name: "ディッシュド エイト", category: "Tuner", image: "./images/TNR_V_20.png", type: "Vanilla", chrome: false },
+  { name: "フジワラ", category: "Tuner", image: "./images/TNR_V_21.png", type: "Vanilla", chrome: false },
+  { name: "ゾクシャ", category: "Tuner", image: "./images/TNR_V_22.png", type: "Vanilla", chrome: false },
+  { name: "バトル エイト", category: "Tuner", image: "./images/TNR_V_23.png", type: "Vanilla", chrome: false },
+  { name: "ラリー マスター", category: "Tuner", image: "./images/TNR_V_24.png", type: "Vanilla", chrome: false },
 
 
   // Bike
-  { name: "スピードウェイ", image: "./images/BKE_V_1.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ストリート スペシャル", image: "./images/BKE_V_2.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "レーサー", image: "./images/BKE_V_3.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "トラック スター", image: "./images/BKE_V_4.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "オーバーロード", image: "./images/BKE_V_5.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "トライデント", image: "./images/BKE_V_6.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "トリプル スレット", image: "./images/BKE_V_7.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "スティレット", image: "./images/BKE_V_8.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ワイヤーズ", image: "./images/BKE_V_9.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ボバー", image: "./images/BKE_V_10.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ソリダス", image: "./images/BKE_V_11.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "アイス シールド", image: "./images/BKE_V_12.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ループス", image: "./images/BKE_V_13.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ロンパー レーシング", image: "./images/BKE_V_14.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ワープ ドライブ", image: "./images/BKE_V_15.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "スノーフレーク", image: "./images/BKE_V_16.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ホーリー スポーク", image: "./images/BKE_V_17.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "オールド スクール トリプル", image: "./images/BKE_V_18.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "フューチュラ", image: "./images/BKE_V_19.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "クォーター マイル キング", image: "./images/BKE_V_20.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "カートホイール", image: "./images/BKE_V_21.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ダブル ファイブ", image: "./images/BKE_V_22.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "シュリケン", image: "./images/BKE_V_23.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "シンプル シックス", image: "./images/BKE_V_24.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ケルティック", image: "./images/BKE_V_25.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "レイザー", image: "./images/BKE_V_26.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ツイステッド", image: "./images/BKE_V_27.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "モーニング スター", image: "./images/BKE_V_28.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ジャギッド スポークス", image: "./images/BKE_V_29.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "エイドロン", image: "./images/BKE_V_30.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "エニグマ", image: "./images/BKE_V_31.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ビッグ スポークス", image: "./images/BKE_V_32.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ウェブズ", image: "./images/BKE_V_33.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ホットプレート", image: "./images/BKE_V_34.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "ボブスタ", image: "./images/BKE_V_35.png", type: "Bike", source: "Vanilla",chrome: "True" },
-  { name: "グラウチ", image: "./images/BKE_V_36.png", type: "Bike", source: "Vanilla",chrome: "True" },
-
+  { name: "スピードウェイ", category: "Bike", image: "./images/BKE_V_1.png", type: "Vanilla", chrome: true },
+  { name: "ストリート スペシャル", category: "Bike", image: "./images/BKE_V_2.png", type: "Vanilla", chrome: true },
+  { name: "レーサー", category: "Bike", image: "./images/BKE_V_3.png", type: "Vanilla", chrome: true },
+  { name: "トラック スター", category: "Bike", image: "./images/BKE_V_4.png", type: "Vanilla", chrome: true },
+  { name: "オーバーロード", category: "Bike", image: "./images/BKE_V_5.png", type: "Vanilla", chrome: true },
+  { name: "トライデント", category: "Bike", image: "./images/BKE_V_6.png", type: "Vanilla", chrome: true },
+  { name: "トリプル スレット", category: "Bike", image: "./images/BKE_V_7.png", type: "Vanilla", chrome: true },
+  { name: "スティレット", category: "Bike", image: "./images/BKE_V_8.png", type: "Vanilla", chrome: true },
+  { name: "ワイヤーズ", category: "Bike", image: "./images/BKE_V_9.png", type: "Vanilla", chrome: true },
+  { name: "ボバー", category: "Bike", image: "./images/BKE_V_10.png", type: "Vanilla", chrome: true },
+  { name: "ソリダス", category: "Bike", image: "./images/BKE_V_11.png", type: "Vanilla", chrome: true },
+  { name: "アイス シールド", category: "Bike", image: "./images/BKE_V_12.png", type: "Vanilla", chrome: true },
+  { name: "ループス", category: "Bike", image: "./images/BKE_V_13.png", type: "Vanilla", chrome: true },
+  { name: "ロンパー レーシング", category: "Bike", image: "./images/BKE_V_14.png", type: "Vanilla", chrome: true },
+  { name: "ワープ ドライブ", category: "Bike", image: "./images/BKE_V_15.png", type: "Vanilla", chrome: true },
+  { name: "スノーフレーク", category: "Bike", image: "./images/BKE_V_16.png", type: "Vanilla", chrome: true },
+  { name: "ホーリー スポーク", category: "Bike", image: "./images/BKE_V_17.png", type: "Vanilla", chrome: true },
+  { name: "オールド スクール トリプル", category: "Bike", image: "./images/BKE_V_18.png", type: "Vanilla", chrome: true },
+  { name: "フューチュラ", category: "Bike", image: "./images/BKE_V_19.png", type: "Vanilla", chrome: true },
+  { name: "クォーター マイル キング", category: "Bike", image: "./images/BKE_V_20.png", type: "Vanilla", chrome: true },
+  { name: "カートホイール", category: "Bike", image: "./images/BKE_V_21.png", type: "Vanilla", chrome: true },
+  { name: "ダブル ファイブ", category: "Bike", image: "./images/BKE_V_22.png", type: "Vanilla", chrome: true },
+  { name: "シュリケン", category: "Bike", image: "./images/BKE_V_23.png", type: "Vanilla", chrome: true },
+  { name: "シンプル シックス", category: "Bike", image: "./images/BKE_V_24.png", type: "Vanilla", chrome: true },
+  { name: "ケルティック", category: "Bike", image: "./images/BKE_V_25.png", type: "Vanilla", chrome: true },
+  { name: "レイザー", category: "Bike", image: "./images/BKE_V_26.png", type: "Vanilla", chrome: true },
+  { name: "ツイステッド", category: "Bike", image: "./images/BKE_V_27.png", type: "Vanilla", chrome: true },
+  { name: "モーニング スター", category: "Bike", image: "./images/BKE_V_28.png", type: "Vanilla", chrome: true },
+  { name: "ジャギッド スポークス", category: "Bike", image: "./images/BKE_V_29.png", type: "Vanilla", chrome: true },
+  { name: "エイドロン", category: "Bike", image: "./images/BKE_V_30.png", type: "Vanilla", chrome: true },
+  { name: "エニグマ", category: "Bike", image: "./images/BKE_V_31.png", type: "Vanilla", chrome: true },
+  { name: "ビッグ スポークス", category: "Bike", image: "./images/BKE_V_32.png", type: "Vanilla", chrome: true },
+  { name: "ウェブズ", category: "Bike", image: "./images/BKE_V_33.png", type: "Vanilla", chrome: true },
+  { name: "ホットプレート", category: "Bike", image: "./images/BKE_V_34.png", type: "Vanilla", chrome: true },
+  { name: "ボブスタ", category: "Bike", image: "./images/BKE_V_35.png", type: "Vanilla", chrome: true },
+  { name: "グラウチ", category: "Bike", image: "./images/BKE_V_36.png", type: "Vanilla", chrome: true },
 
   // Dragster
-  { name: "レトロファイブ", image: "./images/DRS_V_1.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "レトロファイブ（ストライプ）", image: "./images/DRS_V_2.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "レトロ スター", image: "./images/DRS_V_3.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "レトロ スター（ストライプ）", image: "./images/DRS_V_4.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "トリプレックス", image: "./images/DRS_V_5.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "トリプレックス（ストライプ）", image: "./images/DRS_V_6.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "70年代スペック", image: "./images/DRS_V_7.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "70年代 スペック（ストライプ）", image: "./images/DRS_V_8.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "スーパー ファイブ アール", image: "./images/DRS_V_9.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "スーパー ファイブ アール（ストライプ）", image: "./images/DRS_V_10.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "スピードスター", image: "./images/DRS_V_11.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "スピードスター（ストライプ）", image: "./images/DRS_V_12.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "GP-90", image: "./images/DRS_V_13.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "GP-90（ストライプ）", image: "./images/DRS_V_14.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "スーパー スポーク", image: "./images/DRS_V_15.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "スーパー スポーク（ストライプ）", image: "./images/DRS_V_16.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "グリッドライン", image: "./images/DRS_V_17.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "グリッドライン（ストライプ）", image: "./images/DRS_V_18.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "スノーフレーク", image: "./images/DRS_V_19.png", type: "Dragster", source: "Vanilla", chrome: "False"},
-  { name: "スノーフレーク（ストライプ）", image: "./images/DRS_V_20.png", type: "Dragster", source: "Vanilla", chrome: "False"}
+  { name: "レトロファイブ", category: "Dragster", image: "./images/DRS_V_1.png", type: "Vanilla", chrome: false },
+  { name: "レトロファイブ（ストライプ）", category: "Dragster", image: "./images/DRS_V_2.png", type: "Vanilla", chrome: false },
+  { name: "レトロ スター", category: "Dragster", image: "./images/DRS_V_3.png", type: "Vanilla", chrome: false },
+  { name: "レトロ スター（ストライプ）", category: "Dragster", image: "./images/DRS_V_4.png", type: "Vanilla", chrome: false },
+  { name: "トリプレックス", category: "Dragster", image: "./images/DRS_V_5.png", type: "Vanilla", chrome: false },
+  { name: "トリプレックス（ストライプ）", category: "Dragster", image: "./images/DRS_V_6.png", type: "Vanilla", chrome: false },
+  { name: "70年代スペック", category: "Dragster", image: "./images/DRS_V_7.png", type: "Vanilla", chrome: false },
+  { name: "70年代 スペック（ストライプ）", category: "Dragster", image: "./images/DRS_V_8.png", type: "Vanilla", chrome: false },
+  { name: "スーパー ファイブ アール", category: "Dragster", image: "./images/DRS_V_9.png", type: "Vanilla", chrome: false },
+  { name: "スーパー ファイブ アール（ストライプ）", category: "Dragster", image: "./images/DRS_V_10.png", type: "Vanilla", chrome: false },
+  { name: "スピードスター", category: "Dragster", image: "./images/DRS_V_11.png", type: "Vanilla", chrome: false },
+  { name: "スピードスター（ストライプ）", category: "Dragster", image: "./images/DRS_V_12.png", type: "Vanilla", chrome: false },
+  { name: "GP-90", category: "Dragster", image: "./images/DRS_V_13.png", type: "Vanilla", chrome: false },
+  { name: "GP-90（ストライプ）", category: "Dragster", image: "./images/DRS_V_14.png", type: "Vanilla", chrome: false },
+  { name: "スーパー スポーク", category: "Dragster", image: "./images/DRS_V_15.png", type: "Vanilla", chrome: false },
+  { name: "スーパー スポーク（ストライプ）", category: "Dragster", image: "./images/DRS_V_16.png", type: "Vanilla", chrome: false },
+  { name: "グリッドライン", category: "Dragster", image: "./images/DRS_V_17.png", type: "Vanilla", chrome: false },
+  { name: "グリッドライン（ストライプ）", category: "Dragster", image: "./images/DRS_V_18.png", type: "Vanilla", chrome: false },
+  { name: "スノーフレーク", category: "Dragster", image: "./images/DRS_V_19.png", type: "Vanilla", chrome: false },
+  { name: "スノーフレーク（ストライプ）", category: "Dragster", image: "./images/DRS_V_20.png", type: "Vanilla", chrome: false }
 
 
 
 
 ];
 
-// この下はいじらないようにしてください
 
-document.addEventListener("DOMContentLoaded", () => {
-  const searchInput = document.getElementById("search");
-  const typeFilters = document.querySelectorAll(".type-filter");
-  const sourceFilters = document.querySelectorAll(".source-filter");
-  const chromeFilters = document.querySelectorAll(".chrome-filter");
-  const filterSummary = document.getElementById("filter-summary");
-  const container = document.getElementById("wheel-container");
-  const chatToggleBtn = document.getElementById("chat-toggle");
-  const chatWindow = document.getElementById("chat-window");
-  const chatContent = document.getElementById("chat-content");
+/* =========================
+   DOM取得
+========================= */
+const modal = document.getElementById("wheel-modal");
+const modalTitle = document.getElementById("modal-title");
+const wheelContainer = document.getElementById("wheel-container");
+const overlay = document.querySelector(".modal-overlay");
 
-  const devMessages = [
-    "ぱうだぁ: よく見つけたね！",
-    "ぱうだぁ: いつかこのカタログにたくさんの隠し要素を入れてみたいな",
-    "ぱうだぁ: 君は暇なの？",
-    "ぱうだぁ: コナミコマンドって知ってる？",
-    "ぱうだぁ: みんな使ってくれてると嬉しいなぁ",
-    "ぱうだぁ: 実はチャットを開くたびにメッセージが変わるよ！",
-    "ぱうだぁ: だいぶネタ切れだよ",
-    "ぱうだぁ: ぬるぽ",
-    "ぱうだぁ: ここに私の名前を入れるってことは、よっぽど私のことが好きなんだね",
-    "ぱうだぁ: おすすめのお酒ある？ビールと焼酎とウイスキー以外で！！",
-    "ぱうだぁ: 私がこの街に来たのは2023年の7月20日だよ！......あれ、ちがったかも",
-    "ぱうだぁ: ヒドゥンシックスっていうホイールが......",
-    "ぱうだぁ: 暇つぶしで来てくれても歓迎するよ",
-    "ぱうだぁ: お問い合わせフォームのその他に、中山モータースでやってほしいイベントとか募集中！！",
-    "ぱうだぁ: ここだけの話、ぱうだぁーでも、ぱうだーでもなくて、ぱうだぁなんだ。細かいね",
-    "???????: ﾎｹﾞﾎｹﾞﾎｹﾞﾎｹﾞwwwww",
-    "ぱうだぁ: かため濃いめ多めでニンニクマシマシ！！！着丼したらすぐに海苔にアブラを吸わせて......おなかすいたな",
-    "ぱうだぁ: たくさん歩いた後のキンキンに冷えた酒がうまいや！！",
-  ];
-
-  // チャットボタンの表示判定
-  function checkSecretWord() {
-    if (searchInput.value.trim() === "粉末ぱうだぁ") {
-      chatToggleBtn.style.display = "block";
-    } else {
-      chatToggleBtn.style.display = "none";
-    }
-  }
-
-  // チャットボタンの開閉イベント
-  chatToggleBtn.addEventListener("click", () => {
-    const randomMessage = devMessages[Math.floor(Math.random() * devMessages.length)];
-    chatContent.innerHTML = `<p>${randomMessage}</p>`;
-    chatWindow.style.display = chatWindow.style.display === "none" ? "block" : "none";
+/* =========================
+   カテゴリボタン操作
+========================= */
+document.querySelectorAll(".category-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const category = btn.dataset.category;
+    openModal(category);
   });
+});
 
-function displayData(items) {
-  container.innerHTML = "";
+/* =========================
+   モーダルを開く
+========================= */
+function openModal(category) {
+  modal.classList.remove("hidden");
+  modalTitle.textContent = `${category} Wheels`;
+  renderWheels(category);
+}
 
-  if (items.length === 0) {
-    container.innerHTML = `
-      <div class="no-result">
-        <p>この条件のホイールは<strong>存在しません</strong></p>
-      </div>
-    `;
+
+
+/* =========================
+   ホイール描画
+========================= */
+function renderWheels(category) {
+  wheelContainer.innerHTML = "";
+
+  const filtered = wheels.filter(wheel => wheel.category === category);
+
+  if (filtered.length === 0) {
+    wheelContainer.innerHTML =
+      `<p style="text-align:center;">このカテゴリのホイールはありません</p>`;
     return;
   }
 
-  items.forEach(item => {
+  filtered.forEach(wheel => {
     const card = document.createElement("div");
     card.className = "wheel-card";
-    card.innerHTML = `
-      <img src="${item.image}" alt="${item.name}">
-      <h3>${item.name}</h3>
-      <div class="wheel-type">${item.type}</div>
-    `;
 
-    // Sports + MOD のときだけ「色変更〇/✖」表示
-    if (item.type === "Sports" && item.source === "MOD") {
-      const p = document.createElement("p");
-      p.textContent = item.color === "True" ? "色変更〇" : "色変更✖";
-      card.appendChild(p);
+    // カラー変更可否（存在する場合のみ表示）
+    let colorHTML = "";
+    if (typeof wheel.color === "boolean") {
+      colorHTML = `
+        <span class="wheel-color ${wheel.color ? "no-color" : "color-ok"}">
+          ${wheel.color ? "カラー変更不可" : "カラー変更可"}
+        </span>
+      `;
     }
 
-    container.appendChild(card);
+    card.innerHTML = `
+      <img src="${wheel.image}" alt="${wheel.name}">
+      <h3>${wheel.name}</h3>
+
+      <div class="wheel-info">
+        <span class="wheel-category">${wheel.category}</span>
+        ${colorHTML}
+      </div>
+    `;
+
+    wheelContainer.appendChild(card);
   });
 }
 
-  // 上に戻るボタン
-  const scrollBtn = document.getElementById("scroll-to-top");
 
-  window.addEventListener("scroll", () => {
-    scrollBtn.style.display = window.scrollY > 100 ? "block" : "none";
-  });
+/* =========================
+   モーダルを閉じる
+========================= */
+overlay.addEventListener("click", closeModal);
 
-  scrollBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+function closeModal() {
+  modal.classList.add("hidden");
+  wheelContainer.innerHTML = "";
+}
 
-  // フィルター適用
-  function applyFilters() {
-    const keyword = searchInput.value.toLowerCase();
+/* =========================
+   スクロールトップ
+========================= */
+const scrollBtn = document.getElementById("scroll-to-top");
 
-    const selectedTypes = Array.from(typeFilters)
-      .filter(cb => cb.checked)
-      .map(cb => cb.value);
+window.addEventListener("scroll", () => {
+  scrollBtn.style.display = window.scrollY > 200 ? "block" : "none";
+});
 
-    const selectedSources = Array.from(sourceFilters)
-      .filter(cb => cb.checked)
-      .map(cb => cb.value);
+scrollBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
-    const selectedChrome = document.querySelector('input[name="chrome"]:checked')?.value || "All";
 
-    const filtered = data.filter(item => {
-      const matchesName = item.name.toLowerCase().includes(keyword);
-      const matchesType = selectedTypes.includes(item.type);
-      const matchesSource = selectedSources.includes(item.source);
-      const matchesChrome = selectedChrome === "All" || item.chrome === selectedChrome;
+/* =========================
+   ホイール一覧（常設表示）
+========================= */
+const wheelList = document.getElementById("wheel-list");
 
-      return matchesName && matchesType && matchesSource && matchesChrome;
+if (wheelList) {
+  // カテゴリ一覧（表示順を固定）
+  const categories = [
+    "Sports",
+    "Muscle",
+    "Lowrider",
+    "SUV",
+    "Offroad",
+    "Tuner"
+  ];
+
+  categories.forEach(category => {
+    const items = wheels.filter(w => w.category === category);
+    if (items.length === 0) return;
+
+    // 見出し
+    const title = document.createElement("h2");
+    title.className = "wheel-category-title";
+    title.textContent = category;
+    wheelList.appendChild(title);
+
+    // グリッド
+    const grid = document.createElement("div");
+    grid.className = "wheel-list-grid";
+
+    items.forEach(wheel => {
+      const card = document.createElement("div");
+      card.className = "wheel-card";
+
+      const colorHTML =
+        wheel.color === true || wheel.color === false
+          ? `
+            <span class="wheel-color ${wheel.color ? "no-color" : "color-ok"}">
+              ${wheel.color ? "カラー変更不可" : "カラー変更可"}
+            </span>
+          `
+          : "";
+
+      card.innerHTML = `
+        <img src="${wheel.image}" alt="${wheel.name}">
+        <h3>${wheel.name}</h3>
+        <div class="wheel-info">
+          <span class="wheel-category">${wheel.category}</span>
+          ${colorHTML}
+        </div>
+      `;
+
+      grid.appendChild(card);
     });
 
-    filterSummary.textContent = `絞り込み結果：${filtered.length} 件`;
-    displayData(filtered);
-    checkSecretWord(); // ←ここで検索語をチェック
-  }
+    wheelList.appendChild(grid);
+  });
+}
 
-  // イベント登録
-  searchInput.addEventListener("input", () => {
-  applyFilters();
-  checkSecretWord();
-});
 
-  typeFilters.forEach(cb => cb.addEventListener("change", applyFilters));
-  sourceFilters.forEach(cb => cb.addEventListener("change", applyFilters));
-  chromeFilters.forEach(cb => cb.addEventListener("change", applyFilters));
-  
-// すべて選択／解除ボタン
-document.getElementById("type-all-on").addEventListener("click", () => {
-  typeFilters.forEach(cb => cb.checked = true);
-  applyFilters();
-});
-document.getElementById("type-all-off").addEventListener("click", () => {
-  typeFilters.forEach(cb => cb.checked = false);
-  applyFilters();
-});
 
-  // 初期実行
-  applyFilters();
-});
+
+
+
+
+
+
+
 
 
 
