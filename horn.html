@@ -12,7 +12,6 @@
     <nav>
       <a href="index.html">🏠 ホイールカタログ</a>
       <a href="staff.html">👥 スタッフ紹介</a>
-      <a href="horn.html">🔊 クラクション試聴</a>
     </nav>
 
     <div id="horn-toolbar">
@@ -83,11 +82,17 @@
     }
 
     // 表示
-  container.innerHTML = HORNS.map(h => `
-  <div class="horn-card" style="border:2px solid #4dd0e1;border-radius:12px;padding:1rem;text-align:center;background:#fff;margin:8px 0">
-    <h3 style="margin:.2rem 0;color:#0288d1">${h.name}</h3>
-    <button class="play-btn" data-id="${h.id}" style="background:#0288d1;color:#fff;border:none;padding:.5rem 1rem;border-radius:8px;cursor:pointer;margin-bottom:.5rem;">▶ 再生</button>
-    <p style="margin:0;color:#555">${h.comment ?? ""}</p>
+container.innerHTML = HORNS.map(h => `
+  <div class="horn-card">
+    <h3 class="horn-name">${h.name}</h3>
+
+    ${h.comment ? `<p class="horn-comment">${h.comment}</p>` : ""}
+
+    <button class="play-btn" data-id="${h.id}">
+      ▶ 再生
+    </button>
+
+    
   </div>
 `).join('');
 
