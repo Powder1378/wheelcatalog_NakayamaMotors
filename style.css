@@ -217,28 +217,6 @@ body.modal-open {
   margin-top: 0.4rem;
   font-size: 0.8rem;
 }
-
-/* =========================
-   ホイールの種類
-========================= */
-.wheel-category {
-  position: static;              /* absolute完全排除 */
-  background: rgba(2,136,209,.85);
-  color: #fff;
-  padding: 2px 8px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: bold;
-
-  opacity: 0;
-  transition: opacity .3s;
-}
-
-/* hover時に表示 */
-.wheel-card:hover .wheel-category {
-  opacity: 1;
-}
-
 /* =========================
    Color 表示
 ========================= */
@@ -469,6 +447,7 @@ body.modal-open {
   color: #666;
 
 }
+
 
 
 
