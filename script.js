@@ -560,7 +560,7 @@ function renderWheels(category) {
     let colorHTML = "";
     if (typeof wheel.color === "boolean") {
       colorHTML = `
-        <span class="wheel-color ${wheel.color ? "no-color" : "color-ok"}">
+        <span class="wheel-color ${wheel.color ? "color-ok" : "no-color"}">
           ${wheel.color ? "カラー変更可" : "カラー変更不可"}
         </span>
       `;
@@ -663,6 +663,7 @@ if (wheelList) {
     wheelList.appendChild(grid);
   });
 }
+
 
 
 
