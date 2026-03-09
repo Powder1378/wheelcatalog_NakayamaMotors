@@ -642,8 +642,8 @@ if (wheelList) {
       const colorHTML =
         wheel.color === true || wheel.color === false
           ? `
-            <span class="wheel-color ${wheel.color ? "no-color" : "color-ok"}">
-              ${wheel.color ? "カラー変更不可" : "カラー変更可"}
+            <span class="wheel-color ${wheel.color ? "color-ok" : "no-color"}">
+              ${wheel.color ? "カラー変更可" : "カラー変更不可"}
             </span>
           `
           : "";
@@ -663,6 +663,7 @@ if (wheelList) {
     wheelList.appendChild(grid);
   });
 }
+
 
 
 
