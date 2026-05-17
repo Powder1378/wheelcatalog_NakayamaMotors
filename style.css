@@ -460,17 +460,17 @@ body.modal-open {
   }
 
   .staff-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 1.5;
   }
 
   .staff-profile li {
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 1.8;
   }
 
   .staff-description {
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     line-height: 1.9;
   }
 }
