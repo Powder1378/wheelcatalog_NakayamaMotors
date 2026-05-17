@@ -571,7 +571,7 @@ function renderWheels(category) {
       <h3>${wheel.name}</h3>
 
       <div class="wheel-info">
-        <span class="wheel-category">${wheel.category}</span>
+        <span class="wheel-type">${wheel.type}</span>
         ${colorHTML}
       </div>
     `;
