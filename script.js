@@ -481,26 +481,26 @@
   { name: "グラウチ", category: "Bike", image: "./images/BKE_V_36.png", type: "Vanilla", chrome: true },
 
   // Open wheel
-  { name: "レトロ5", category: "Openwheel", image: "./images/DRS_V_1.png", type: "Vanilla", chrome: false },
-  { name: "レトロ5（ストライプ）", category: "Openwheel", image: "./images/DRS_V_2.png", type: "Vanilla", chrome: false },
-  { name: "レトロ スター", category: "Openwheel", image: "./images/DRS_V_3.png", type: "Vanilla", chrome: false },
-  { name: "レトロ スター（ストライプ）", category: "Openwheel", image: "./images/DRS_V_4.png", type: "Vanilla", chrome: false },
-  { name: "トリプレックス", category: "Openwheel", image: "./images/DRS_V_5.png", type: "Vanilla", chrome: false },
-  { name: "トリプレックス（ストライプ）", category: "Openwheel", image: "./images/DRS_V_6.png", type: "Vanilla", chrome: false },
-  { name: "70年代スペック", category: "Openwheel", image: "./images/DRS_V_7.png", type: "Vanilla", chrome: false },
-  { name: "70年代 スペック（ストライプ）", category: "Openwheel", image: "./images/DRS_V_8.png", type: "Vanilla", chrome: false },
-  { name: "スーパー 5R", category: "Openwheel", image: "./images/DRS_V_9.png", type: "Vanilla", chrome: false },
-  { name: "スーパー 5R（ストライプ）", category: "Openwheel", image: "./images/DRS_V_10.png", type: "Vanilla", chrome: false },
-  { name: "スピードスター", category: "Openwheel", image: "./images/DRS_V_11.png", type: "Vanilla", chrome: false },
-  { name: "スピードスター（ストライプ）", category: "Openwheel", image: "./images/DRS_V_12.png", type: "Vanilla", chrome: false },
-  { name: "GP-90", category: "Openwheel", image: "./images/DRS_V_13.png", type: "Vanilla", chrome: false },
-  { name: "GP-90（ストライプ）", category: "Openwheel", image: "./images/DRS_V_14.png", type: "Vanilla", chrome: false },
-  { name: "スーパー スポーク", category: "Openwheel", image: "./images/DRS_V_15.png", type: "Vanilla", chrome: false },
-  { name: "スーパー スポーク（ストライプ）", category: "Openwheel", image: "./images/DRS_V_16.png", type: "Vanilla", chrome: false },
-  { name: "グリッドライン", category: "Openwheel", image: "./images/DRS_V_17.png", type: "Vanilla", chrome: false },
-  { name: "グリッドライン（ストライプ）", category: "Openwheel", image: "./images/DRS_V_18.png", type: "Vanilla", chrome: false },
-  { name: "スノーフレーク", category: "Openwheel", image: "./images/DRS_V_19.png", type: "Vanilla", chrome: false },
-  { name: "スノーフレーク（ストライプ）", category: "Openwheel", image: "./images/DRS_V_20.png", type: "Vanilla", chrome: false }
+  { name: "レトロ5", category: "Open", image: "./images/DRS_V_1.png", type: "Vanilla", chrome: false },
+  { name: "レトロ5（ストライプ）", category: "Open", image: "./images/DRS_V_2.png", type: "Vanilla", chrome: false },
+  { name: "レトロ スター", category: "Open", image: "./images/DRS_V_3.png", type: "Vanilla", chrome: false },
+  { name: "レトロ スター（ストライプ）", category: "Open", image: "./images/DRS_V_4.png", type: "Vanilla", chrome: false },
+  { name: "トリプレックス", category: "Open", image: "./images/DRS_V_5.png", type: "Vanilla", chrome: false },
+  { name: "トリプレックス（ストライプ）", category: "Open", image: "./images/DRS_V_6.png", type: "Vanilla", chrome: false },
+  { name: "70年代スペック", category: "Open", image: "./images/DRS_V_7.png", type: "Vanilla", chrome: false },
+  { name: "70年代 スペック（ストライプ）", category: "Open", image: "./images/DRS_V_8.png", type: "Vanilla", chrome: false },
+  { name: "スーパー 5R", category: "Open", image: "./images/DRS_V_9.png", type: "Vanilla", chrome: false },
+  { name: "スーパー 5R（ストライプ）", category: "Open", image: "./images/DRS_V_10.png", type: "Vanilla", chrome: false },
+  { name: "スピードスター", category: "Open", image: "./images/DRS_V_11.png", type: "Vanilla", chrome: false },
+  { name: "スピードスター（ストライプ）", category: "Open", image: "./images/DRS_V_12.png", type: "Vanilla", chrome: false },
+  { name: "GP-90", category: "Open", image: "./images/DRS_V_13.png", type: "Vanilla", chrome: false },
+  { name: "GP-90（ストライプ）", category: "Open", image: "./images/DRS_V_14.png", type: "Vanilla", chrome: false },
+  { name: "スーパー スポーク", category: "Open", image: "./images/DRS_V_15.png", type: "Vanilla", chrome: false },
+  { name: "スーパー スポーク（ストライプ）", category: "Open", image: "./images/DRS_V_16.png", type: "Vanilla", chrome: false },
+  { name: "グリッドライン", category: "Open", image: "./images/DRS_V_17.png", type: "Vanilla", chrome: false },
+  { name: "グリッドライン（ストライプ）", category: "Open", image: "./images/DRS_V_18.png", type: "Vanilla", chrome: false },
+  { name: "スノーフレーク", category: "Open", image: "./images/DRS_V_19.png", type: "Vanilla", chrome: false },
+  { name: "スノーフレーク（ストライプ）", category: "Open", image: "./images/DRS_V_20.png", type: "Vanilla", chrome: false }
 
 
 
@@ -622,7 +622,7 @@ if (wheelList) {
     "HighEnd",
     "Benny's",
     "Bespoke",
-    "Openwheel",
+    "Open",
     "Street",
     "Track"
   ];
