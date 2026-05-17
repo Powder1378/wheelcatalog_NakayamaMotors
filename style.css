@@ -379,10 +379,6 @@ body.modal-open {
 
   box-shadow: 0 4px 10px rgba(0,0,0,.08);
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   overflow: hidden;
 }
 
@@ -407,36 +403,23 @@ body.modal-open {
 ========================= */
 .staff-card h3 {
   margin: 6px 0;
-
   color: #0288d1;
-
   font-size: 1rem;
   line-height: 1.4;
 
-  word-break: keep-all;
-  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* =========================
    プロフィール
 ========================= */
 .staff-profile {
-  list-style: none;
-
-  padding: 0;
-  margin: 0.5rem 0;
-
-  width: 100%;
-}
-
-.staff-profile li {
   margin: .25rem 0;
 
   font-size: 0.85rem;
   line-height: 1.5;
 
-  word-break: keep-all;
-  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* =========================
@@ -448,8 +431,7 @@ body.modal-open {
 
   margin-top: 0.5rem;
 
-  word-break: keep-all;
-  overflow-wrap: break-word;
+  word-break: break-word;
 
   color: #333;
 }
