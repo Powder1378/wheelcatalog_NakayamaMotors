@@ -442,6 +442,133 @@ body.modal-open {
   opacity: 0.5;
 }
 /* =========================
+   スタッフ一覧
+========================= */
+.staff-container {
+  display: grid;
+
+  /* PC */
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+
+  width: 100%;
+  max-width: 1600px;
+
+  margin: 0 auto;
+  padding: 1.5rem;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   タブレット
+========================= */
+@media (max-width: 1100px) {
+  .staff-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================
+   スマホ
+========================= */
+@media (max-width: 700px) {
+  .staff-container {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+    padding: 1rem;
+  }
+}
+
+/* =========================
+   超小型スマホ
+========================= */
+@media (max-width: 480px) {
+  .staff-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   スタッフカード
+========================= */
+.staff-card {
+  background: #ffffff;
+  border: 2px solid #4fc3f7;
+  border-radius: 16px;
+  padding: 16px;
+
+  min-width: 0;
+
+  text-align: center;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+
+  overflow: hidden;
+}
+
+/* =========================
+   画像
+========================= */
+.staff-card img {
+  width: 120px;
+  height: 120px;
+
+  object-fit: cover;
+
+  border-radius: 16px;
+
+  margin-bottom: 8px;
+
+  flex-shrink: 0;
+}
+
+/* =========================
+   名前
+========================= */
+.staff-card h3 {
+  margin: 6px 0;
+  color: #0288d1;
+  font-size: 1rem;
+  line-height: 1.4;
+
+  word-break: break-word;
+}
+
+/* =========================
+   プロフィール
+========================= */
+.staff-profile {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+/* =========================
+   説明文
+========================= */
+.staff-description {
+  font-size: 0.8rem;
+  line-height: 1.6;
+
+  margin-top: 0.5rem;
+
+  word-break: break-word;
+
+  color: #333;
+}
+
+
+/* =========================
+   小さめの文字
+========================= */
+.small-text {
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+/* =========================
    スマホ微調整
 ========================= */
 @media (max-width: 700px) {
