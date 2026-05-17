@@ -414,12 +414,9 @@ body.modal-open {
    プロフィール
 ========================= */
 .staff-profile {
-  margin: .25rem 0;
-
-  font-size: 0.85rem;
-  line-height: 1.5;
-
-  word-break: break-word;
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
 }
 
 /* =========================
