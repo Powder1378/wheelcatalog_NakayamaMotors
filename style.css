@@ -475,6 +475,17 @@ body.modal-open {
   }
 }
 
+/* =========================
+      隠し背景 
+========================= */
+.secret-bg {
+  background-image: url("./images/secret_bg.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  transition: 0.5s;
+}
 
 /* ===== クラクション一覧 ===== */
 
