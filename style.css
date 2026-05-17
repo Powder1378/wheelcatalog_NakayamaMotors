@@ -479,7 +479,7 @@ body.modal-open {
       隠し背景 
 ========================= */
 .secret-bg {
-  background-image: url("./images/secret_bg.png");
+  background-image: url("./images/hibiki.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
