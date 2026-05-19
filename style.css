@@ -25,6 +25,21 @@ header {
 header h1 {
   margin: 0;
   font-size: 1.8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+}
+
+.title-icon {
+  width: 40px;
+  height: 40px;
+
+  object-fit: contain;
+
+  vertical-align: middle;
 }
 
 nav {
@@ -41,7 +56,6 @@ nav a {
 nav a:hover {
   text-decoration: underline;
 }
-
 /* =========================
    カテゴリ選択（4列固定）
 ========================= */
