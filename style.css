@@ -177,7 +177,7 @@ nav a:hover {
   top: 0;
   background: #e0f7fa;
   padding: 0.5rem 0;
-  z-index: 40;
+  z-index: 100;
 
   text-align: center;
   color: #0288d1;
