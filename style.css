@@ -174,7 +174,7 @@ nav a:hover {
 
 .modal-header {
   position: sticky;
-  top: 0;
+  top: -1px;
 
   background: #e0f7fa;
 
