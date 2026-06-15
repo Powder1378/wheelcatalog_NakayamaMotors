@@ -164,7 +164,7 @@ nav a:hover {
   position: relative;
   background: #e0f7fa;
   max-width: 1200px;
-  margin: 1vh auto;
+  margin: 0 auto;
   padding: 1rem;
   border-radius: 16px;
   max-height: 90vh;
@@ -184,7 +184,7 @@ nav a:hover {
 
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
 
-  z-index: 100;
+  z-index: 9999;
 }
 
 .modal-header h2 {
