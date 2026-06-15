@@ -531,10 +531,14 @@ document.querySelectorAll(".category-btn").forEach(btn => {
 ========================= */
 function openModal(category) {
   modal.classList.remove("hidden");
+
+  document.body.classList.add("modal-open");
+
   modalTitle.textContent = `${category} Wheels`;
   renderWheels(category);
-}
 
+  document.querySelector(".modal-content").scrollTop = 0;
+}
 
 
 /* =========================
@@ -587,6 +591,9 @@ overlay.addEventListener("click", closeModal);
 
 function closeModal() {
   modal.classList.add("hidden");
+
+  document.body.classList.remove("modal-open");
+
   wheelContainer.innerHTML = "";
 }
 
