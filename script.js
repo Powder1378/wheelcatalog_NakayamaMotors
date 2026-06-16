@@ -686,6 +686,10 @@ logo.addEventListener("dblclick", () => {
  
 }
 
+
+/* =========================
+   訪問確認
+========================= */
 function sendVisitLog() {
 
   fetch("https://script.google.com/macros/s/AKfycbxawSWLoapxzyb_Eg35JqrdGn32YOb-qYpT76J-ez9MKTzIRf9Ryc8JdmF1SloLHoU_/exec", {
@@ -701,7 +705,13 @@ function sendVisitLog() {
   });
 
 }
+if (!localStorage.getItem("visited")) {
 
+  sendVisitLog();
+
+  localStorage.setItem("visited", "true");
+
+}
 
 
 
