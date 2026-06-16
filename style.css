@@ -226,7 +226,6 @@ body.modal-open {
 .wheel-card img {
   max-width: 100%;
   border-radius: 8px;
-  cursor: zoom-in;
   transition: transform .2s ease;
 }
 
@@ -293,43 +292,6 @@ body.modal-open {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
-}
-
-/* =========================
-   画像拡大モーダル
-========================= */
-
-.image-modal.hidden {
-  display: none;
-}
-
-.image-modal {
-  position: fixed;
-  inset: 0;
-
-  background: rgba(0,0,0,.85);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  z-index: 20000;
-}
-
-#modal-image {
-  max-width: 90vw;
-  max-height: 90vh;
-
-  border-radius: 12px;
-
-  box-shadow: 0 0 25px rgba(255,255,255,.2);
-
-  cursor: zoom-out;
-}
-
-.image-overlay {
-  position: absolute;
-  inset: 0;
 }
 
 
