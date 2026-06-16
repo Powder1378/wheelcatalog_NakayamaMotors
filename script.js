@@ -677,7 +677,7 @@ if (wheelList) {
 
 
  // ダブルクリックで背景変更
- const logo = document.querySelector(".nishi-icon");
+ const logo = document.querySelector(".title-icon");
 
 logo.addEventListener("dblclick", () => {
   document.body.classList.toggle("secret-bg");
