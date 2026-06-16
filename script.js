@@ -583,6 +583,29 @@ function renderWheels(category) {
   });
 }
 
+/* =========================
+   画像拡大モーダル
+========================= */
+const imageModal = document.getElementById("image-modal");
+const modalImage = document.getElementById("modal-image");
+
+// ホイール画像クリック
+wheelContainer.addEventListener("click", (e) => {
+
+  if (e.target.tagName === "IMG") {
+
+    modalImage.src = e.target.src;
+
+    imageModal.classList.remove("hidden");
+  }
+
+});
+
+// 閉じる
+imageModal.addEventListener("click", () => {
+  imageModal.classList.add("hidden");
+});
+
 
 /* =========================
    モーダルを閉じる
