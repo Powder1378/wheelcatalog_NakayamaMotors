@@ -686,7 +686,21 @@ logo.addEventListener("dblclick", () => {
  
 }
 
+function sendVisitLog() {
 
+  fetch("https://script.google.com/macros/s/AKfycbxawSWLoapxzyb_Eg35JqrdGn32YOb-qYpT76J-ez9MKTzIRf9Ryc8JdmF1SloLHoU_/exec", {
+
+    method: "POST",
+
+    body: JSON.stringify({
+      action: "visit"
+    })
+
+  }).catch(err => {
+    console.log(err);
+  });
+
+}
 
 
 
