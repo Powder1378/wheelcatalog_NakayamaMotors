@@ -226,10 +226,8 @@ body.modal-open {
 .wheel-card img {
   max-width: 100%;
   border-radius: 8px;
-
-  transition:
-    transform .25s ease,
-    opacity .25s ease;
+  cursor: zoom-in;
+  transition: transform .2s ease;
 }
 
 .wheel-card:hover img {
